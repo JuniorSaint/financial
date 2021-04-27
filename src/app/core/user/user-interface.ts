@@ -18,5 +18,6 @@ export interface UserInterface extends InterfacePadrao{
   repPassword : string,
   active: boolean,
   userKind: string,
+  
 
 }
