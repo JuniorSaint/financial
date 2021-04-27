@@ -1,0 +1,64 @@
+.example-form {
+
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+#card-div{
+  width: clamp(378px,40%, 50%) ;
+}
+
+#main-div{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#header-card{
+  margin-right: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.btn-salvar{
+  border-radius: 20px;
+  background-color: #00d4ff;
+}
+
+.btn-voltar{
+  border-radius: 20px;
+  background-color: #ffad00;
+  margin-left: 10px;
+}
+
+#calendar{
+  width: 100%;
+}
+
+
+@media screen and (max-width: 489px) {
+  .p-formgroup-inline {
+      .p-field {
+          margin-bottom: 1em !important;
+      }
+  }
+}
+
+.layout-content .content-section.implementation > h3 {
+  font-weight: 600;
+}
+
+textarea {
+  resize: none;
+}
+
+

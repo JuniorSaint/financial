@@ -1,0 +1,59 @@
+
+
+
+<div id="container">
+
+  <mat-card id="card-div">
+
+    <mat-card-header>
+      <mat-card id="header-card">
+        <div>
+          <p style="letter-spacing: 1px; font-size: 1.5rem; "> Lista de entradas </p>
+        </div>
+        <div>
+          <button mat-raised-button class="btn-novo" [routerLink]="['new']"
+            routerLinkActive="router-link-active">Novo</button>
+        </div>
+      </mat-card>
+    </mat-card-header>
+
+    <p-table [value]="dataSource">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 280px;">Nome <br><span style="font-size: 0.8em;">Login</span>  </th>
+              <th style="width: 250px;">Email</th>
+              <th style="width: 70px;">Ativo</th>
+              <th >Tipo</th>
+              <th>Telefone</th>
+              <th>Ação</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dataSource>
+          <tr>
+              <td style="width: 280px;">{{dataSource.name}} <br> {{ dataSource.login }}</td>
+              <td style="width: 250px;">{{dataSource.email}}</td>
+              <td style="width: 70px;">{{dataSource.active}}</td>
+              <td >{{dataSource.type}}</td>
+              <td>{{dataSource.phone}}</td>
+              <td>
+                <button mat-mini-fab [routerLink]="[dataSource._id]" color="primary"
+                aria-label="Example icon button with a plus one icon">
+                <span class="material-icons">
+                  edit
+                </span>
+              </button>
+                <button mat-mini-fab color="accent" (click)="delete(dataSource._id)"
+                aria-label="Example icon button with a plus one icon" style="margin-left: 10px;">
+                <span class="material-icons">
+                  delete
+                </span>
+              </button></td>
+          </tr>
+      </ng-template>
+  </p-table>
+
+
+  </mat-card>
+
+
+</div>

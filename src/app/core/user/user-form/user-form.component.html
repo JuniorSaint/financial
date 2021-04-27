@@ -1,0 +1,183 @@
+<div id="main">
+  <div id="container">
+    <form [formGroup]="formulario">
+
+
+      <mat-card>
+          <mat-card-header>
+            <mat-card style="width: 100%; margin-bottom: 15px;">
+
+              <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle  }} </p>
+
+            </mat-card>
+
+          </mat-card-header>
+
+          <mat-card-content>
+
+
+
+
+      <div class="card">
+        <!-- Primeira Linha  -->
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-6">
+            <label for="Nome">Nome</label>
+            <input id="Nome" type="text" pInputText formControlName="name">
+            <mat-error
+            *ngIf="formulario.controls['name'].hasError('required')">
+            Nome é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          </div>
+
+          <div class="p-field p-col-12 p-md-6">
+            <label for="Email">Email</label>
+            <input id="Email" type="text" pInputText formControlName="email">
+            <mat-error
+            *ngIf="formulario.controls['email'].hasError('required')">
+            Email é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          <mat-error
+          *ngIf="formulario.controls['email'].hasError('email')">
+          Email esta  <strong style="letter-spacing: 1px;">errado</strong>
+        </mat-error>
+          </div>
+
+          <!-- Segunda Linha  -->
+
+          <div class="p-field p-col-12 p-md-6">
+            <label for="log">Login</label>
+            <input id="log" formControlName="login" type="text" pInputText>
+            <mat-error
+            *ngIf="formulario.controls['login'].hasError('required')">
+            Login é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          </div>
+
+          <div class="p-field p-col-12 p-md-3">
+            <label for="senha">Senha</label>
+            <p-password formControlName="password" [toggleMask]="true"></p-password>
+            <mat-error
+            *ngIf="formulario.controls['password'].hasError('required')">
+            Senha é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          </div>
+
+          <div class="p-field p-col-12 p-md-3">
+            <label for="repass">Confirmar Senha</label>
+            <p-password formControlName="repPassword" [feedback]="false"></p-password>
+            <mat-error
+            *ngIf="formulario.controls['repPassword'].hasError('required')">
+            Repetir senha é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          </div>
+
+
+          <!-- Início de Array de telefones -->
+          <div class="p-field p-col-12 card">
+
+            <div id="telefones">
+              <div formArrayName="phone">
+                <div class="titulos">
+                  <p>Telefones - Click no ícone do telefone para adicionar mais de um número</p>
+                </div>
+                <div *ngFor="
+            let forServico of phoneFormControl.controls;
+            let i = index
+          " [formGroupName]="i">
+                  <div class="p-field p-col-12 ">
+
+                    <mat-card-content id="telefones-content">
+                      <div class="col" style="width: 180px;">
+                        <p-dropdown [options]="typoPhone" formControlName="phoneType" placeholder="Tipo"
+                          optionLabel="tipo" optionValue="value" [showClear]="true"></p-dropdown>
+                      </div>
+
+
+                      <div class="p-col-12 p-md-6 p-lg-4">
+                        <p-inputMask mask="(999) 99999-9999 " formControlName="phoneNumber"></p-inputMask>
+                      </div>
+
+                      <div class="col"style="width: 200px;">
+                        <p-dropdown [options]="optionSocial" formControlName="social" placeholder="Rede Social"
+                          optionLabel="social" optionValue="value" [showClear]="true"></p-dropdown>
+                      </div>
+                      <button (click)="newPhone()" pButton pRipple type="button" icon="pi pi-phone"
+                        class="p-button-rounded"></button>
+
+                      <button style="margin-left: 10px;" (click)="removeTelefone(i)" *ngIf="phoneFormControl.length > 1"
+                        pButton pRipple type="button" icon="pi pi-trash"
+                        class="p-button-rounded p-button-danger"></button>
+
+
+                    </mat-card-content>
+                    <mat-card-actions>
+
+                    </mat-card-actions>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim de Array de telefones -->
+
+
+
+          <!-- Quarta Linha  -->
+
+
+          <div class="p-field p-col-12 p-md-3">
+            <label for="ativo">Ativo</label>
+            <p-dropdown [options]="activeUser" formControlName="active"
+            placeholder="Usuário Ativo" optionLabel="acUser" optionValue="value"
+            [showClear]="true"></p-dropdown>
+            <mat-error
+            *ngIf="formulario.controls['active'].hasError('required')">
+            Usuário ativo é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          </div>
+          <div class="p-field p-col-12 p-md-3">
+            <label for="zip">Tipo de usuáio</label>
+            <p-dropdown [options]="typeUser" formControlName="userKind"
+            placeholder="Tipo Usuário" optionLabel="tipU"
+            optionValue="value" [showClear]="true"></p-dropdown>
+            <mat-error
+            *ngIf="formulario.controls['userKind'].hasError('required')">
+            Tipo de usuário é  <strong style="letter-spacing: 1px;">obrigatório</strong>
+          </mat-error>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+
+          </mat-card-content>
+          <mat-card-actions >
+            <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid"  class="btn-salvar"> {{ txtBtn }} </button>
+            <button mat-raised-button (click)="voltar()" class="btn-voltar">Voltar</button>
+
+          </mat-card-actions>
+
+          <mat-card-footer>
+            <ng-template *ngIf="matchingOut === false"  >
+              <p style="color: red;"> As senha não conferem, favor corrigir</p>
+            </ng-template>
+          </mat-card-footer>
+
+      </mat-card>
+
+
+
+
+
+
+
+
+
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,131 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "category": "Despesas com Alimentação",
+      "descricao": "supermercado, padaria, bar, açougue ..."
+    },
+    {
+      "id": 2,
+      "category": "Despesas com Farmácia",
+      "descricao": "remédios"
+    },
+    {
+      "id": 3,
+      "category": "Despesas com contas fixas",
+      "descricao": "internet, cemig, água, aluguel ..."
+    },
+    {
+      "id": 4,
+      "category": "Receita ",
+      "descricao": "Salário, hora extra, bicos"
+    },
+    {
+      "id": 5,
+      "category": "Outras despesas",
+      "descricao": "Bujão de gás, saída e outros ..."
+    }
+  ],
+  "entry": [
+    {
+      "id": 1,
+      "name": "Gas Braz",
+      "description": "Compra de bujão de gas",
+      "type": "Despesa",
+      "amount": 95.85,
+      "date": "2021-04-13T03:00:00.000Z",
+      "paid": true,
+      "category": "Despesas com Alimentação"
+    },
+    {
+      "id": 2,
+      "name": "Padaria da Esquina",
+      "description": "5 pães de sao",
+      "type": "Despesa",
+      "amount": 2.5,
+      "date": "2021-04-14T03:00:00.000Z",
+      "paid": true,
+      "category": "Despesas com Alimentação"
+    },
+    {
+      "id": 3,
+      "name": "Salário do Mês de abril",
+      "description": "salário fixo",
+      "type": "Receita",
+      "amount": 3000,
+      "date": "2021-04-22T03:00:00.000Z",
+      "paid": true,
+      "category": "Receita "
+    },
+    {
+      "id": 4,
+      "name": "Empresa",
+      "description": "hora extra",
+      "type": "Receita",
+      "amount": 125.52,
+      "date": "2021-04-21T03:00:00.000Z",
+      "paid": true,
+      "category": "Receita "
+    },
+    {
+      "id": 5,
+      "name": "Girafa's bar",
+      "description": "saída de final de semana",
+      "type": "Despesa",
+      "amount": 68.65,
+      "date": "2021-04-15T03:00:00.000Z",
+      "paid": true,
+      "category": "Outras despesas"
+    },
+    {
+      "id": 6,
+      "name": "Posto de gasolina",
+      "description": "combustível",
+      "type": "Despesa",
+      "amount": 180,
+      "date": "2021-04-28T03:00:00.000Z",
+      "paid": true,
+      "category": "Outras despesas"
+    },
+    {
+      "id": 7,
+      "name": "Lavoura",
+      "description": "bico na lavoura",
+      "type": "Receita",
+      "amount": 60,
+      "date": "2021-04-14T03:00:00.000Z",
+      "paid": true,
+      "category": "Receita "
+    },
+    {
+      "id": 8,
+      "name": "Farmácia do Juca",
+      "description": "paracetamol",
+      "type": "Despesa",
+      "amount": 10.8,
+      "date": "2021-04-14T03:00:00.000Z",
+      "paid": true,
+      "category": "Despesas com Farmácia"
+    },
+    {
+      "id": 9,
+      "name": "Açouge do Tadeu",
+      "description": "carne",
+      "type": "Despesa",
+      "amount": 54.98,
+      "date": "2021-04-14T03:00:00.000Z",
+      "paid": true,
+      "category": "Despesas com Alimentação"
+    },
+    {
+      "id": 10,
+      "name": "Viagem",
+      "description": "ida a Juiz de Fora",
+      "type": "Despesa",
+      "amount": 250.87,
+      "date": "2021-04-05T03:00:00.000Z",
+      "paid": true,
+      "category": "Outras despesas"
+    }
+  ]
+}

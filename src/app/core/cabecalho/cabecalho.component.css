@@ -1,0 +1,17 @@
+
+
+
+button{
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 600px) {
+  #btn-side {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  #btn-menu {
+    display: none;
+  }
+}

@@ -1,0 +1,48 @@
+
+#container{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-div{
+  width: clamp(378px, 60%, 65%);
+  }
+
+#header-card{
+  margin-right: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.btn-novo{
+  border-radius: 20px;
+  background-color: aquamarine;
+}
+
+
+
+/* CSS da tabela */
+
+th{
+  line-height: 0.7em;
+}
+
+td{
+  line-height: 2rem;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+

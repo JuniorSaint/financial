@@ -1,0 +1,37 @@
+
+
+
+#main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-top: 50px;
+}
+
+#container{
+  width: 900px;
+
+}
+
+#telefones-content {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.col{
+  margin-right: 10px;
+}
+
+
+.btn-salvar{
+  border-radius: 20px;
+  background-color: #00d4ff;
+}
+
+.btn-voltar{
+  border-radius: 20px;
+  background-color: #ffad00;
+  margin-left: 10px;
+}

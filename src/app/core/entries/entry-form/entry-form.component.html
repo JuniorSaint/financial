@@ -1,0 +1,115 @@
+<div id="main-div">
+  <mat-card id="card-div">
+    <mat-card-header>
+
+      <mat-card id="header-card">
+        <div>
+          <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle  }} </p>
+        </div>
+        <div>
+
+        </div>
+      </mat-card>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <form style="margin-top: 30px;" class="example-form" [formGroup]="formulario">
+
+        <div>
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+              <label for="nome">Nome</label>
+              <input id="nome" type="text" pInputText formControlName="name" required>
+              <small id="nome-help" class="p-error"> </small>
+            </div>
+
+            <div class="p-field p-col">
+              <label for="descricao">Descrição</label>
+              <input id="descricao" type="text" pInputText formControlName="description" required>
+              <small id="descricao-help" class="p-error"> </small>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+              <label for="currency">Valor</label>
+              <p-inputNumber mode="currency" inputId="currency" formControlName="amount" placeholder="1.000,00"
+                currency="BRL" locale="pt-BR" id="currency">
+              </p-inputNumber>
+              <small id="currency-help" class="p-error"> </small>
+            </div>
+
+            <div class="p-field p-col">
+              <label for="tipo">Tipo</label>
+              <p-dropdown placeholder=" _ " [options]="tipoLanc" formControlName="type" optionValue=""
+                [showClear]="true" id="tipo">
+              </p-dropdown>
+              <small id="tipo-help" class="p-error"> </small>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+              <label for="pago">Esta Pago</label>
+              <p-dropdown id="pago" placeholder=" _ " [options]="simNao" formControlName="paid" optionLabel="label"
+                optionValue="value" [showClear]="true">
+              </p-dropdown>
+
+            </div>
+
+
+            <div class="p-field p-col">
+              <mat-form-field color="primary" appearance="fill" id="calendar">
+                <label for="caledario">Data de Lançamento</label>
+                <input matInput [matDatepicker]="picker1" formControlName="date" id="calendario" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+            </div>
+
+
+          </div>
+        </div>
+
+<!-- teste começa aqui -->
+
+
+
+
+
+
+<!-- teste termina aqui -->
+
+        <div>
+
+
+
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+              <label for="categoria">Categoria</label>
+               <p-dropdown placeholder=" _ " [options]="categoria1" optionLabel="category" formControlName="category" optionValue="category"
+                [showClear]="true" id="categoria">
+              </p-dropdown>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </form>
+    </mat-card-content>
+    <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid" class="btn-salvar"> {{ txtBtn }}
+    </button>
+    <button mat-raised-button (click)="voltar()" class="btn-voltar">Voltar</button>
+  </mat-card>
+</div>
+
