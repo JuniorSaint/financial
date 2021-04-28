@@ -32,8 +32,8 @@ export class ReportComponent implements OnInit, OnDestroy {
     this.subscription = this.service.get()
       .pipe(
 
-        map(dados => dados.filter(dados =>{this.dateFinal >= dados.date   && this.dateFinal <= dados.date ,
-          console.log(dados.date, this.dateFinal)
+        map(dados => dados.filter(dados =>{this.dateFinal >= dados.dateLaunch   && this.dateFinal <= dados.dateLaunch ,
+          console.log(dados.dateLaunch, this.dateFinal)
         } ),
 
         ),

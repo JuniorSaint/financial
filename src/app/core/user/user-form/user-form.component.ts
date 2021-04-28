@@ -84,6 +84,7 @@ export class UserFormComponent  extends FormularioPadrao<UserInterface> implemen
 
    // ********************* Função de Popular Formulário  ********************
 
+
    popularForm() {
     if (this.urlAtiva !== 'new') {
       this.servico.getByID(this.urlAtiva)
@@ -103,10 +104,14 @@ export class UserFormComponent  extends FormularioPadrao<UserInterface> implemen
             userKind: this.formUpdate.userKind,
         }
         )
-      })
+      }
+              
+      
+      )
     }
 
   }
+
 
   // Inicio para adicionar telefone
 

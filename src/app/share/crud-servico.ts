@@ -1,11 +1,12 @@
 
 import { Inject, Injectable, Injector } from '@angular/core';
 import {  Observable } from 'rxjs';
-import { catchError, take } from 'rxjs/operators';
+import { catchError, map, take } from 'rxjs/operators';
 import { HttpHeaders,  HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { InterfacePadrao } from 'src/app/share/interface-padrao';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,9 @@ export abstract class CrudServico< T extends  InterfacePadrao >{
 
   get(): Observable<T[]> {
     return this.http.get<T[]>(this.URL)
-      .pipe(catchError(this.handleError)
+      .pipe( 
+        map( ( dados:any) => dados = dados.result),
+        catchError(this.handleError)
       );
   }
 
@@ -30,6 +33,7 @@ export abstract class CrudServico< T extends  InterfacePadrao >{
     return this.http.get<T>(`${this.URL}/${id}`)
       .pipe(
         take(1),
+        map( ( dados:any) => dados = dados.result),
         catchError(this.handleError)
       );
   }
@@ -48,8 +52,7 @@ export abstract class CrudServico< T extends  InterfacePadrao >{
 
   update(source: T, id:string): Observable<T> {
 
-    alert(source)
-    return this.http.patch<T>(`${this.URL}/${id}`, source, {
+    return this.http.put<T>(`${this.URL}/${id}`, source, {
       headers: new HttpHeaders({ 'contente-Type': 'application/json' })
     });
   }

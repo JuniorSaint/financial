@@ -15,11 +15,40 @@
     <mat-card-content>
 
 
-      <div *ngFor="let item of dataSource ">
-        <div>{{ dataSource }} </div>
+      <p-table [value]="dataSource">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Categoria</th>
+                <th>Descrição</th>
+                <th>Ação</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dataSource>
+            <tr>
+                <td>{{dataSource.category}}</td>
+                <td>{{dataSource.description}}</td>
+                <td>
 
-      </div>
 
+            <button mat-mini-fab [routerLink]="[dataSource._id]" color="primary"
+            aria-label="Example icon button with a plus one icon">
+            <span class="material-icons">
+              edit
+            </span>
+          </button>
+
+          <button mat-mini-fab color="accent" (click)="delete(dataSource._id)"
+            aria-label="Example icon button with a plus one icon" style="margin-left: 10px;">
+            <span class="material-icons">
+              delete
+            </span>
+          </button>
+
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
 
 
 

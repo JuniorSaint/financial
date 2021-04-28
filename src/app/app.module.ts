@@ -1,5 +1,5 @@
 import { SharedModule } from './share/shared.module';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +18,10 @@ import { MaterialModule } from './share/material.module';
 import { UserModule } from './core/user/user.module';
 import { AuthModule } from './core/auth/auth.module';
 
-
+// configuracao do locale pt-BR
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
 
 
 
@@ -41,7 +44,7 @@ import { AuthModule } from './core/auth/auth.module';
     AuthModule
 
   ],
-  providers: [  ],
+  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

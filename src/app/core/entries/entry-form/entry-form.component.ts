@@ -1,6 +1,6 @@
 
 import { Injector, Component, OnInit, OnDestroy } from '@angular/core';
-import { map } from 'rxjs/operators';
+
 import { Subscription } from 'rxjs';
 import { CategoryServico } from './../../category/category-servico.service';
 import { Validators } from '@angular/forms';
@@ -23,19 +23,7 @@ export class EntryFormComponent extends FormularioPadrao<EntryInterface> impleme
   subscription!: Subscription;
 
 
-  categoria1 =[
- { _id: "60869af168d1fc660ab0e4f6", category: "21", description: "21" },
-​​
- { _id: "608429231f45d531984fc3e5", category: "agora", description: "agora" },
-​​
-{ _id: "608609ae68d1fc660ab0e4f2", category: "fsadfa", description: "fdsfa" },
-​​
-{ _id: "608609fa68d1fc660ab0e4f4", category: "pela ultima", description: "pela ultima" },
-​​
- { _id: "608077813c917baaa651e306", category: "tudo bem", description: "tudo bem" },
-​​
-{ _id: "60807c73a03e13af534c8e50", category: "vzcxv", description: "cxzvzcv" }
-  ]
+
 
   simNao = [
     { label: 'Sim', value: true },
@@ -64,9 +52,6 @@ export class EntryFormComponent extends FormularioPadrao<EntryInterface> impleme
     this.popularForm();  // função de popular o forumulário
 
     this.subscription = this.serviceCat.get()
-        .pipe( map((res) => res = res)
-
-         ) 
        .subscribe(
         dados => this.categoria = dados,
         error => console.log(error),
@@ -79,7 +64,7 @@ export class EntryFormComponent extends FormularioPadrao<EntryInterface> impleme
       description: [null, Validators.required],
       type: [null, Validators.required],
       amount: [null, Validators.required],
-      date: [null, Validators.required],
+      dateLaunch: [null, Validators.required],
       paid: [null, Validators.required],
       category: [null, Validators.required]
     });
@@ -105,7 +90,7 @@ export class EntryFormComponent extends FormularioPadrao<EntryInterface> impleme
               description: this.entryByID.description,
               type: this.entryByID.type,
               amount: this.entryByID.amount,
-              date: this.entryByID.date,
+              dateLaunch: this.entryByID.dateLaunch,
               paid: this.entryByID.paid,
               category: this.entryByID.category
             }

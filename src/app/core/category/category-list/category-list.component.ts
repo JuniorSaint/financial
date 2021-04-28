@@ -1,5 +1,7 @@
 
 
+
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,6 +10,7 @@ import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confi
 import { CategoryInterface } from '../category-interface';
 import { CategoryServico } from '../category-servico.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-category-list',
@@ -32,9 +35,8 @@ export class CategoryListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-
-
     this.subscription = this.servico.get()
+
       .subscribe(
         dados => this.dataSource = dados,
         error => console.log(error),
