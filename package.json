@@ -25,6 +25,7 @@
     "@fullcalendar/angular": "^5.6.0",
     "@fullcalendar/core": "^4.1.0",
     "@fullcalendar/daygrid": "^5.6.0",
+    "@types/stacktrace-js": "^2.0.3",
     "angular-imask": "^6.0.7",
     "body-parse": "^0.1.0",
     "chart.js": "^3.1.0",
@@ -36,6 +37,7 @@
     "primeicons": "^4.1.0",
     "primeng": "^11.3.2",
     "rxjs": "~6.6.0",
+    "stacktrace-js": "^2.0.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

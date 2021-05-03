@@ -25,7 +25,7 @@
             <label for="Nome">Nome</label>
             <input id="Nome" type="text" pInputText formControlName="name">
             <mat-error
-            *ngIf="formulario.controls['name'].hasError('required')">
+            *ngIf="formulario.controls['name'].hasError('required') && formulario.touched">
             Nome é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           </div>
@@ -34,11 +34,11 @@
             <label for="Email">Email</label>
             <input id="Email" type="text" pInputText formControlName="email">
             <mat-error
-            *ngIf="formulario.controls['email'].hasError('required')">
+            *ngIf="formulario.controls['email'].hasError('required') && formulario.touched">
             Email é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           <mat-error
-          *ngIf="formulario.controls['email'].hasError('email')">
+          *ngIf="formulario.controls['email'].hasError('email') && formulario.touched">
           Email esta  <strong style="letter-spacing: 1px;">errado</strong>
         </mat-error>
           </div>
@@ -49,7 +49,7 @@
             <label for="log">Login</label>
             <input id="log" formControlName="login" type="text" pInputText>
             <mat-error
-            *ngIf="formulario.controls['login'].hasError('required')">
+            *ngIf="formulario.controls['login'].hasError('required') && formulario.touched">
             Login é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           </div>
@@ -58,7 +58,7 @@
             <label for="senha">Senha</label>
             <p-password formControlName="password" [toggleMask]="true"></p-password>
             <mat-error
-            *ngIf="formulario.controls['password'].hasError('required')">
+            *ngIf="formulario.controls['password'].hasError('required') && formulario.touched">
             Senha é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           </div>
@@ -67,14 +67,14 @@
             <label for="repass">Confirmar Senha</label>
             <p-password formControlName="repPassword" [feedback]="false"></p-password>
             <mat-error
-            *ngIf="formulario.controls['repPassword'].hasError('required')">
+            *ngIf="formulario.controls['repPassword'].hasError('required') && formulario.touched">
             Repetir senha é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           </div>
 
 
           <!-- Início de Array de telefones -->
-          <div class="p-field p-col-12 card">
+          <!-- <div class="p-field p-col-12 card">
 
             <div id="telefones">
               <div formArrayName="phone">
@@ -118,7 +118,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- Fim de Array de telefones -->
 
 
@@ -132,7 +132,7 @@
             placeholder="Usuário Ativo" optionLabel="acUser" optionValue="value"
             [showClear]="true"></p-dropdown>
             <mat-error
-            *ngIf="formulario.controls['active'].hasError('required')">
+            *ngIf="formulario.controls['active'].hasError('required') && formulario.touched">
             Usuário ativo é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           </div>
@@ -142,7 +142,7 @@
             placeholder="Tipo Usuário" optionLabel="tipU"
             optionValue="value" [showClear]="true"></p-dropdown>
             <mat-error
-            *ngIf="formulario.controls['userKind'].hasError('required')">
+            *ngIf="formulario.controls['userKind'].hasError('required') && formulario.touched">
             Tipo de usuário é  <strong style="letter-spacing: 1px;">obrigatório</strong>
           </mat-error>
           </div>
@@ -152,8 +152,6 @@
         </div>
       </div>
 
-
-
           </mat-card-content>
           <mat-card-actions >
             <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid"  class="btn-salvar"> {{ txtBtn }} </button>
@@ -162,7 +160,7 @@
           </mat-card-actions>
 
           <mat-card-footer>
-            <ng-template *ngIf="matchingOut === false"  >
+            <ng-template *ngIf="formulario.errors?.matchingPassword" >
               <p style="color: red;"> As senha não conferem, favor corrigir</p>
             </ng-template>
           </mat-card-footer>

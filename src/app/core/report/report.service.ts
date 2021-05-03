@@ -2,7 +2,7 @@ import { EntryInterface } from './../entries/entry-interface';
 import { CrudServico } from 'src/app/share/crud-servico';
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,14 @@ constructor(
   super('http://localhost:5000/entry', injector)
 }
 
-getMovByDate(dataIn: Date, dateFim: Date): Observable<EntryInterface[]> {
-  return this.http.get<EntryInterface[]>(`${this.URL}/${dataIn} ${dateFim}`)
-    .pipe(catchError(this.handleError)
+getByDate(): Observable<EntryInterface[]> {
+  return this.http.get<EntryInterface[]>(this.URL)
+    .pipe( 
+      map( ( dados:any ) => dados = dados.result),
+      catchError(this.handleError)
     );
 }
+
+
 
 }

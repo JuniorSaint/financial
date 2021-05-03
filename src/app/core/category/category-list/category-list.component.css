@@ -5,10 +5,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 #card-div{
-  width: clamp(378px, 60%, 65%);
+  width: clamp(378px, 60%, 60%);
   }
 
 #header-card{

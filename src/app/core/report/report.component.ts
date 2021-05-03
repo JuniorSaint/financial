@@ -1,8 +1,12 @@
-import { EntryService } from './../entries/entry.service';
+
+
+
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { filter, map, reduce, tap, } from 'rxjs/operators';
 import { EntryInterface } from '../entries/entry-interface';
 import { Subscription } from 'rxjs';
+import { ReportService } from './report.service';
+
 
 
 
@@ -19,28 +23,23 @@ export class ReportComponent implements OnInit, OnDestroy {
   totalReceita!: number;
   totalDespesa!: Number;
   Sado!: number;
-  entry!: {};
+  dataSource!:EntryInterface[];
   subscription!: Subscription;
 
   constructor(
-    private service: EntryService,
+    private service: ReportService,
   ) {
 
   }
 
   ngOnInit(): void {
+    
     this.subscription = this.service.get()
-      .pipe(
-
-        map(dados => dados.filter(dados =>{this.dateFinal >= dados.dateLaunch   && this.dateFinal <= dados.dateLaunch ,
-          console.log(dados.dateLaunch, this.dateFinal)
-        } ),
-
-        ),
-      )
-      .subscribe(dados => this.entry = dados,
+      .subscribe(
+        dados => this.dataSource = dados,
         error => console.log(error),
-        () => console.log(this.entry)
+        () => console.log('oi'+this.dataSource )
+
       );
 
   }
@@ -48,8 +47,6 @@ export class ReportComponent implements OnInit, OnDestroy {
 
   generateReports() {
 
-    console.log(this.entry)
-    console.log(this.dateInicial, this.dateFinal)
 
   }
 

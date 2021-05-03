@@ -36,17 +36,26 @@ export class CategoryListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.subscription = this.servico.get()
-
       .subscribe(
         dados => this.dataSource = dados,
-        error => console.log(error),
-        () => console.log(this.dataSource)
-
+        error => console.log(error)
       );
+
+
 
   }
 
-  edit(id:string){
+  // ********************** Reiniciar o ngOnInit após inclusão  **********************
+
+  recicleNgOn() {
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 500);
+  }
+
+  // ********************** Redirecionamento para edição  **********************
+
+  editForm(id: string) {
     this.router.navigate([`category/${id}`]);
   }
 
@@ -79,11 +88,17 @@ export class CategoryListComponent implements OnInit, OnDestroy {
 
 
 
- // ********************** Lista de cabeçalho da tabela  **********************
+  // ********************** Lista de cabeçalho da tabela  **********************
 
   displayedColumns: string[] = ['categoria', 'acao'];
 
 
+
+  // ********************** Btn criar nova Categoria  **********************
+
+  novaCat() {
+    this.router.navigate(['category/new']);
+  }
 
 
   // ********************** NG On Destroy  **********************

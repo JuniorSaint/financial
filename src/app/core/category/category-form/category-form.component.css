@@ -1,6 +1,6 @@
 .example-form {
 
-  width: 100%;
+  width: 350px;
 }
 
 .example-full-width {
@@ -8,7 +8,7 @@
 }
 
 #card-div{
-  width: clamp(378px,40%, 50%) ;
+  width: clamp(378px,60%, 60%) ;
 }
 
 #main-div{
@@ -18,7 +18,18 @@
   justify-content: center;
   align-items: center;
 }
+form{
+  display: flex;
+  flex-direction: row;
 
+}
+
+#btnActions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 #header-card{
   margin-right: 20px;
@@ -33,6 +44,7 @@
 .btn-salvar{
   border-radius: 20px;
   background-color: #00d4ff;
+  margin-left: 10px;
 }
 
 .btn-voltar{

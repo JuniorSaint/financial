@@ -1,5 +1,6 @@
+import { GlobalErrorHandler } from './share/global-error/global-erro';
 import { SharedModule } from './share/shared.module';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,12 +25,13 @@ import ptBr from '@angular/common/locales/pt';
 registerLocaleData(ptBr);
 
 
-
+import { PageNotFoundComponent } from './share/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CabecalhoComponent,
+    PageNotFoundComponent,
 
   ],
   imports: [
@@ -44,7 +46,12 @@ registerLocaleData(ptBr);
     AuthModule
 
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'pt-BR' } ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

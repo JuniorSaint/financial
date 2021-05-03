@@ -16,3 +16,15 @@
   justify-content: space-around;
   align-items: space-around;
 }
+
+#date-select{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#header-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

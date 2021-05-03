@@ -5,7 +5,8 @@ import { catchError, map, take } from 'rxjs/operators';
 import { HttpHeaders,  HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { InterfacePadrao } from 'src/app/share/interface-padrao';
+import { InterfacePadrao } from './interface-padrao';
+
 
 
 @Injectable({

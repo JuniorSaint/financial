@@ -1,8 +1,9 @@
+import { CategoryInterface } from './../category-interface';
 import { CategoryServico } from './../category-servico.service';
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormularioPadrao } from './../../../share/formulario-padrao';
-import { CategoryInterface } from '../category-interface';
+import { CategoryListComponent } from '../category-list/category-list.component';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { CategoryInterface } from '../category-interface';
 })
 export class CategoryFormComponent  extends FormularioPadrao<CategoryInterface> implements OnInit  {
 
+    @ViewChild(CategoryListComponent)  formList!: CategoryListComponent
 
   formUpdate!: CategoryInterface;
 
@@ -19,14 +21,12 @@ export class CategoryFormComponent  extends FormularioPadrao<CategoryInterface> 
     protected injector: Injector,
     protected servico: CategoryServico,
 )
-  { super(injector, 'category' , servico ); }
+  { super(injector, 'category/new' , servico ); }
 
 
   // ********************* NG on Init  ********************
 
   ngOnInit(): void {
-
-
 
     this.popularForm();  // função de popular o forumulário
 
@@ -36,6 +36,8 @@ export class CategoryFormComponent  extends FormularioPadrao<CategoryInterface> 
       description: [null, Validators.required]
     });
   }
+  
+
 
 
  // ********************* Função de Popular Formulário  ********************
@@ -56,6 +58,25 @@ export class CategoryFormComponent  extends FormularioPadrao<CategoryInterface> 
       })
     }
 
+  }
+
+   // ********************* Limpar Campos do formulário ********************
+
+  clearFields(){
+    this.formulario.reset();
+  }
+
+   // ********************* Sobrepondo ao método de salvar  ********************
+
+  salvar(formValue: CategoryInterface): void {
+
+    this.servico.create(formValue)
+      .subscribe(
+        () => this.snackBar.open('Formulário salvo com sucesso', '', { duration: 2000 }),
+        error => this.snackBar.open('Erro ao salvar o formulário', error, { duration: 2000 }),
+        () => this.ngOnInit()
+      )
+        this.formList.recicleNgOn();
   }
 
 

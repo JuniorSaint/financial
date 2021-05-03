@@ -1,13 +1,14 @@
-import { map } from 'rxjs/operators';
+
 import { Inject, Injector, AfterContentChecked, Component } from '@angular/core';
-import { InterfacePadrao } from 'src/app/share/interface-padrao';
-import { CrudServico } from 'src/app/share/crud-servico';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
+import { InterfacePadrao } from './interface-padrao';
+import { CrudServico } from './crud-servico';
+import { BotaoConfirmaComponent } from './botao-confirma/botao-confirma.component';
+
 
 @Component({
   selector: '',
@@ -49,7 +50,7 @@ export abstract class FormularioPadrao<T extends InterfacePadrao> implements Aft
     this.dialog = this.injector.get(MatDialog);
     this.snackBar = this.injector.get(MatSnackBar);
     this.rotaVoltar = rotaVoltar;  // Variável para pegar o valor do botão voltar
-    this.urlAtiva = this.route.snapshot.url[0].path; //pegar id ou se é novo cadastro
+    this.urlAtiva = this.route.snapshot.url[0]?.path ?? ' '; //pegar id ou se é novo cadastro
 
   }
 
@@ -112,8 +113,7 @@ export abstract class FormularioPadrao<T extends InterfacePadrao> implements Aft
 
     this.servico.create(formValue)
       .subscribe(
-        () => console.log(formValue),
-        // () => this.snackBar.open('Formulário salvo com sucesso', '', { duration: 2000 }),
+        () => this.snackBar.open('Formulário salvo com sucesso', '', { duration: 2000 }),
         error => this.snackBar.open('Erro ao salvar o formulário', error, { duration: 2000 }),
         () => this.formulario.reset()
       )

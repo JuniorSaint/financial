@@ -1,5 +1,4 @@
 <div id="container">
-
   <mat-card id="card-div">
     <mat-card-header>
       <mat-card id="header-card">
@@ -7,7 +6,6 @@
           <p style="letter-spacing: 1px; font-size: 1.5rem; "> Lista de categorias </p>
         </div>
         <div>
-          <button mat-raised-button  class="btn-novo"  [routerLink]="['new']" routerLinkActive="router-link-active">Novo</button>
         </div>
       </mat-card>
     </mat-card-header>
@@ -30,7 +28,7 @@
                 <td>
 
 
-            <button mat-mini-fab [routerLink]="[dataSource._id]" color="primary"
+            <button mat-mini-fab (click)="editForm(dataSource._id)" color="primary"
             aria-label="Example icon button with a plus one icon">
             <span class="material-icons">
               edit

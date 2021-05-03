@@ -3,9 +3,9 @@
     <mat-card-header>
 
 
-        <mat-card style="width: 100%; margin-bottom: 15px;">
+      <mat-card style="width: 100%; margin-bottom: 15px;">
 
-          <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle  }} </p>
+        <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle }} </p>
 
       </mat-card>
 
@@ -14,29 +14,36 @@
 
     <mat-card-content>
 
-      <form  style="margin-top: 30px;" class="example-form" [formGroup]="formulario">
+      <form style="margin-top: 30px;" class="example-form" [formGroup]="formulario" >
 
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Categoria</mat-label>
-          <input matInput formControlName="category" required autocomplete="off" autofocus>
-          <mat-error *ngIf="formulario.controls['category'].hasError('required')">
-            Categoria é <strong style="letter-spacing: 1px;"> Obrigatório </strong>
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Categoria</mat-label>
+            <input matInput formControlName="category" required autocomplete="off" autofocus>
+            <mat-error *ngIf="formulario.controls['category'].hasError('required') && formulario.touched && formulario.pristine">
+              Categoria é <strong style="letter-spacing: 1px;"> Obrigatório </strong>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Descrição</mat-label>
-          <input matInput formControlName="description" required autocomplete="off" autofocus>
-          <mat-error *ngIf="formulario.controls['description'].hasError('required')">
-            Descrição é <strong style="letter-spacing: 1px;"> Obrigatório </strong>
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" style="margin-left: 10px;">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="description" required autocomplete="off" autofocus>
+            <mat-error *ngIf="formulario.controls['description'].hasError('required') && formulario.touched && formulario.pristine">
+              Descrição é <strong style="letter-spacing: 1px;"> Obrigatório </strong>
+            </mat-error>
+          </mat-form-field>
+
+        <div id="btnActions">
+          <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid" class="btn-salvar"> {{ txtBtn }}
+          </button>
+          <button mat-raised-button (click)="clearFields()" class="btn-voltar">Limpar Campos</button>
+        </div>
 
 
       </form>
     </mat-card-content>
-    <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid" class="btn-salvar"> {{ txtBtn }} </button>
-    <button mat-raised-button (click)="voltar()" class="btn-voltar">Voltar</button>
+
   </mat-card>
+
+  <app-category-list></app-category-list>
 </div>

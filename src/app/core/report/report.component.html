@@ -3,30 +3,33 @@
     <mat-card>
       <mat-card-header>
 
-        <mat-card-title>Selecione o Mês e Ano para gerar os relatórios</mat-card-title>
+
+          <div id="header-title">
+            <h1>Selecione o período para gerar os relatórios</h1>
+          </div>
+
 
       </mat-card-header>
 
       <mat-card-content>
         <div id="content-body">
 
+          <div id="date-select">
+            <div class="p-field p-col-12 p-md-4">
+              <label for="icon">Data Inicial</label>
+              <p-calendar [(ngModel)]="dateInicial" [showIcon]="true" inputId="icon" dateFormat="dd/mm/yy"></p-calendar>
+          </div>
+          <div class="p-field p-col-12 p-md-4">
+            <label for="icon">Data Final</label>
+            <p-calendar [(ngModel)]="dateFinal" [showIcon]="true" inputId="icon"  dateFormat="dd/mm/yy"></p-calendar>
+        </div>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Enter a date range</mat-label>
-            <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate [(ngModel)]="dateInicial" placeholder="Start date">
-              <input matEndDate [(ngModel)]="dateFinal" placeholder="End date">
-            </mat-date-range-input>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
+          </div>
 
-          </mat-form-field>
-
-
-
-
+          {{ dateInicial }} - {{ dateFinal }}
 
         </div>
+
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button (click)="generateReports()" color="primary">Relatórios</button>
