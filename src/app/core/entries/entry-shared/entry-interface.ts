@@ -7,7 +7,7 @@ export interface EntryInterface extends InterfacePadrao {
   description: string,
   typeEntry: string,
   amount: number,
-  dateLaunch:  Date,
+  dateLaunch:  string,
   paid: boolean,
   category: string
 

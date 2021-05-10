@@ -1,8 +1,18 @@
+#btn-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 100%;
+}
 
-
-
-button{
+button {
   letter-spacing: 1px;
+}
+
+button:hover{
+  z-index: 2;
+  box-shadow: 3px;
 }
 
 @media screen and (min-width: 600px) {
@@ -14,4 +24,9 @@ button{
   #btn-menu {
     display: none;
   }
+}
+
+.icon-menu {
+  font-size: 18px;
+  margin-right: 5px;
 }

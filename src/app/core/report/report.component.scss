@@ -1,3 +1,5 @@
+
+
 #main-div {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,7 @@
 #card-div {
   width: 900px;
 }
+
 
 #content-body {
   display: flex;
@@ -24,7 +27,16 @@
 }
 
 #header-title{
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
+  align-content: space-between;
 }
+
+#vlr-saida{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+

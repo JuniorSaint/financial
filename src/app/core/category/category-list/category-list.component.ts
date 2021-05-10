@@ -7,9 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
-import { CategoryInterface } from '../category-interface';
-import { CategoryServico } from '../category-servico.service';
+import { CategoryInterface } from '../category-shared/category-interface';
+
 import { Router } from '@angular/router';
+import { CategoryServico } from '../category-shared/category-servico.service';
 
 
 @Component({

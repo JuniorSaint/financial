@@ -1,3 +1,5 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HeaderPadraoModule } from './hearder-padrao/header-padrao.module';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,19 +9,23 @@ import { PrimengModule } from './primeng.module';
 import { BotaoConfirmaComponent } from './botao-confirma/botao-confirma.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     BotaoConfirmaComponent,
-
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     PrimengModule,
+    HeaderPadraoModule,
+
     
+  ],
+  exports:[
+    HeaderPadraoModule,
+    PrimengModule,
+    MaterialModule,
 
   ]
 })

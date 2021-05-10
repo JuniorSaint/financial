@@ -1,19 +1,26 @@
 
-import { Component, OnInit, Injector } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
 import { FormArray, FormGroup, Validators } from '@angular/forms';
+
 import { FormularioPadrao } from 'src/app/share/formulario-padrao';
-import { UserInterface } from '../user-interface';
-import { UserService } from '../user.service';
+import { UserInterface } from '../user-shared/user-interface';
+import { UserService } from '../user-shared/user.service';
+
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent extends FormularioPadrao<UserInterface> implements OnInit {
+export class UserFormComponent extends FormularioPadrao<UserInterface> implements OnInit, OnDestroy {
 
   formUpdate!: UserInterface;
-  matchingOut!: boolean;
+
+  subscription!: Subscription;
+  emailUser$!: any;
+  emalMatch = true;
 
   optionSocial = [
     { social: "Whatsapp", value: "whatsapp" },
@@ -27,7 +34,7 @@ export class UserFormComponent extends FormularioPadrao<UserInterface> implement
   ]
 
   typeUser = [
-    { tipU: "Administrador", value: "administrator" },
+    { tipU: "Administrador", value: "administrador" },
     { tipU: "Usuário", value: "user" }
   ]
 
@@ -47,40 +54,37 @@ export class UserFormComponent extends FormularioPadrao<UserInterface> implement
 
   ngOnInit(): void {
 
-
-
     this.popularForm();  // função de popular o forumulário
 
     this.formulario = this.fb.group({
       _id: [],
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      // phone: this.fb.array([this.addPhone()]),
+      phone: this.fb.array([this.addPhone()]),
       login: [null, Validators.required],
-      password: [null, [Validators.required, Validators.minLength(6)]],
-      repPassword: [null, [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repPassword: ['', [Validators.required, Validators.minLength(6)]],
       active: [null, Validators.required],
       userKind: [null, Validators.required]
-    }, { Validator: this.matchingPassword });
+    }, { validator: [this.matchingPasswords] },
+  );
   }
 
   // ********************* Comparação de passaword  ********************
 
-  matchingPassword(group: FormGroup) {
-    const pass = group.get('password')?.value ?? '';
-    const rePass = group.get('rePassword')?.value ?? '';
+  matchingPasswords(group: FormGroup) {
 
-    if (pass.trim() + rePass.trim()) {
-      return pass === rePass ? this.matchingOut = true : { matching: false };
+    const password = group.get('password')?.value ?? '' ;
+    const repPassword = group.get('repPassword')?.value ?? '' ;
+
+    if(repPassword.trim() + password.trim()) {
+        return repPassword !== password ? { senhaMatching: false } : null;
     } else {
-      return null
+        return null;
     }
-
   }
 
-
   // ********************* Função de Popular Formulário  ********************
-
 
   popularForm() {
     if (this.urlAtiva !== 'new') {
@@ -92,7 +96,7 @@ export class UserFormComponent extends FormularioPadrao<UserInterface> implement
             this.formulario.patchValue({
               _id: this.formUpdate._id,
               name: this.formUpdate.name,
-              // phone: this.fb.array([this.addPhone()]),
+              phone: this.fb.array([this.addPhone()]),
               email: this.formUpdate.email,
               login: this.formUpdate.login,
               password: this.formUpdate.password,
@@ -112,25 +116,31 @@ export class UserFormComponent extends FormularioPadrao<UserInterface> implement
 
   // Inicio para adicionar telefone
 
-  // addPhone(): FormGroup {
-  //   return this.fb.group({
-  //     phoneType: [null],
-  //     phoneNumber: [null],
-  //     social: [null]
-  //   });
-  // }
+  addPhone(): FormGroup {
+    return this.fb.group({
+      phoneType: [null],
+      phoneNumber: [null],
+      social: [null]
+    });
+  }
 
 
-  // newPhone(): void {
-  //   this.phoneFormControl.push(this.addPhone());
-  // }
+  newPhone(): void {
+    this.phoneFormControl.push(this.addPhone());
+  }
 
-  // removeTelefone(i:any): void {
-  //   this.phoneFormControl.removeAt(i);
-  // }
+  removeTelefone(i: any): void {
+    this.phoneFormControl.removeAt(i);
+  }
 
-  // get phoneFormControl(): FormArray {
-  //   return this.formulario.get('phone') as FormArray;
-  // }
+  get phoneFormControl(): FormArray {
+    return this.formulario.get('phone') as FormArray;
+  }
 
+
+  // ***********************  NgOnDestroy ****************fxFlex="
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

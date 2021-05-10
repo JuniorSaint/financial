@@ -1,10 +1,13 @@
-import { CategoryInterface } from './../category-interface';
-import { CategoryServico } from './../category-servico.service';
+
+
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormularioPadrao } from './../../../share/formulario-padrao';
 import { CategoryListComponent } from '../category-list/category-list.component';
-
+import { CategoryServico } from '../category-shared/category-servico.service';
+import { CategoryInterface } from '../category-shared/category-interface';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-category-form',

@@ -1,44 +1,80 @@
 <div id="main-div">
   <div id="card-div">
     <mat-card>
-      <mat-card-header>
-
+      <form [formGroup]="formulario">
+        <mat-card-header>
+          <mat-card-title> </mat-card-title>
 
           <div id="header-title">
-            <h1>Selecione o período para gerar os relatórios</h1>
+            <div>
+              <h1>Selecione o período para gerar os relatórios</h1>
+            </div>
+            <div>
+              Seu Saldo é : {{ saldo | currency:'BRL'}}
+            </div>
           </div>
 
 
-      </mat-card-header>
+        </mat-card-header>
 
-      <mat-card-content>
-        <div id="content-body">
+        <mat-card-content>
+          <div id="content-body">
 
-          <div id="date-select">
-            <div class="p-field p-col-12 p-md-4">
-              <label for="icon">Data Inicial</label>
-              <p-calendar [(ngModel)]="dateInicial" [showIcon]="true" inputId="icon" dateFormat="dd/mm/yy"></p-calendar>
+
+            <div id="date-select">
+              <div class="p-field p-col-12 p-md-4">
+                <label for="icon">Data Inicial</label>
+                <p-calendar formControlName="dataInicial" inputStyleClass="form-control" dataType="string"
+                  dateFormat="dd/mm/yy" [locale]="ptBR" [showButtonBar]="true" inputId="icon">
+                </p-calendar>
+              </div>
+              <div class="p-field p-col-12 p-md-4">
+                <label for="icon">Data Final</label>
+                <p-calendar formControlName="dataFinal" inputStyleClass="form-control" dataType="string"
+                  dateFormat="dd/mm/yy" [locale]="ptBR" [showButtonBar]="true" inputId="icon">
+                </p-calendar>
+              </div>
+
+            </div>
+
           </div>
-          <div class="p-field p-col-12 p-md-4">
-            <label for="icon">Data Final</label>
-            <p-calendar [(ngModel)]="dateFinal" [showIcon]="true" inputId="icon"  dateFormat="dd/mm/yy"></p-calendar>
-        </div>
 
-          </div>
-
-          {{ dateInicial }} - {{ dateFinal }}
-
-        </div>
-
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button (click)="generateReports()" color="primary">Relatórios</button>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button [disabled]="formulario.invalid" (click)="saldoPeriodo()"
+            color="primary">Relatórios</button>
 
 
-      </mat-card-actions>
-      <mat-card-footer>
+        </mat-card-actions>
+        <mat-card-footer>
 
-      </mat-card-footer>
+          <mat-card id="vlr-saida">
+
+            <mat-card>
+              <mat-card-header>Receita do período :</mat-card-header>
+              <mat-card-content>
+                <span > {{ totalReceita | currency:'BRL' }} </span>
+              </mat-card-content>
+            </mat-card>
+
+            <mat-card>
+              <mat-card-header>Despesa do período :</mat-card-header>
+              <mat-card-content>
+                <span > {{ totalDespesa | currency:'BRL' }} </span>
+              </mat-card-content>
+            </mat-card>
+
+            <mat-card>
+              <mat-card-content>
+                <mat-card-header>Saldo do período :</mat-card-header> <span > {{ totalSaldo |
+                  currency:'BRL' }} </span>
+              </mat-card-content>
+            </mat-card>
+
+          </mat-card>
+
+        </mat-card-footer>
+      </form>
     </mat-card>
   </div>
 </div>
@@ -47,4 +83,3 @@
 
   </div>
 </div>
-

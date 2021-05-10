@@ -66,12 +66,12 @@
 
 
             <div class="p-field p-col">
-              <mat-form-field color="primary" appearance="fill" id="calendar">
-                <label for="caledario">Data de Lançamento</label>
-                <input matInput [matDatepicker]="picker1" formControlName="dateLaunch" id="calendario" required>
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-              </mat-form-field>
+
+                <label for="icon">Data Final</label>
+                <p-calendar formControlName="dateLaunch" dataType="string"
+                [showIcon]="true" inputId="icon" dateFormat="dd/mm/yy">
+                </p-calendar>
+
 
             </div>
 

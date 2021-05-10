@@ -1,8 +1,9 @@
 <!-- Lista de botoes da barra lateral do menu  -->
 
 <mat-menu #menu="matMenu">
+  <nav>
 
-  <button mat-menu-item [routerLink]="['/report']" routerLinkActive="router-link-active">
+  <button mat-menu-item [routerLink]="['/report']" routerLinkActive="mat-accent">
     <mat-icon>notifications_off</mat-icon>
     <span>Relatório</span>
   </button>
@@ -26,49 +27,65 @@
     <span class="material-icons"> login </span>
     <span>Sign in</span>
   </button>
-
+</nav>
 </mat-menu>
 
 <!-- Menu  -->
 
-<mat-card>
 
-  <mat-toolbar>
+
+<mat-card>
+  <nav>
+
+  <mat-toolbar id="container-menu">
     <div id="btn-side">
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>menu</mat-icon>
       </button>
 
     </div>
+
     <div id="btn-menu">
-      <button mat-button [routerLink]="['/report']" routerLinkActive="router-link-active">
-        <span class="material-icons">
-          payments
-        </span>
-        <span>Relatório</span>
-      </button>
+      <div id="btn-esquerdo">
+        <button mat-button [routerLink]="['/report']" routerLinkActive="router-link-active">
+          <span class="material-icons">
+            payments
+          </span>
+          <span>Relatório</span>
+        </button>
 
-      <button mat-button [routerLink]="['/category/new']" routerLinkActive="router-link-active">
-        <mat-icon>notifications_off</mat-icon>
-        <span>Categoria</span>
-      </button>
+        <button mat-button [routerLink]="['/category/new']" routerLinkActive="router-link-active">
+          <mat-icon>notifications_off</mat-icon>
+          <span>Categoria</span>
+        </button>
 
-      <button mat-button [routerLink]="['/entry']" routerLinkActive="router-link-active">
-        <mat-icon> paid </mat-icon>
-        <span>Entradas</span>
-      </button>
+        <button mat-button [routerLink]="['/entry']" routerLinkActive="router-link-active">
+          <mat-icon> paid </mat-icon>
+          <span>Entradas</span>
+        </button>
 
-      <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active">
-        <span class="material-icons"> person </span>
-        <span>Usuário</span>
-      </button>
+        <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active">
+          <span class="material-icons"> person </span>
+          <span>Usuário</span>
+        </button>
 
-      <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
-        <span class="material-icons"> login </span>
-        <span>Sign in</span>
-      </button>
+      </div>
+
+      <div id="btn-direito">
+        <button mat-button (click)="logOut()">
+          <span > <i class="fas fa-sign-in-alt icon-menu"></i> </span>
+          <span>Sign Out</span>
+        </button>
+
+
+        <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
+          <span > <i class="fas fa-sign-in-alt icon-menu"></i> </span>
+          <span>Sign In</span>
+        </button>
+
+      </div>
 
     </div>
   </mat-toolbar>
-
+</nav>
 </mat-card>

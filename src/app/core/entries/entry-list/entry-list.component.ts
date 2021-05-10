@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
-import { EntryInterface } from '../entry-interface';
-import { EntryService } from '../entry.service';
+import { EntryInterface } from '../entry-shared/entry-interface';
+import { EntryService } from '../entry-shared/entry.service';
 
 
 @Component({

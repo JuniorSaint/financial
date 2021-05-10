@@ -42,7 +42,7 @@ export abstract class CrudServico< T extends  InterfacePadrao >{
 
   create(source: T): Observable<T> {
 
-    return this.http.post<T>(this.URL, source, {
+    return this.http.post<T>(`${this.URL}/create`, source, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
       .pipe(
@@ -72,11 +72,12 @@ export abstract class CrudServico< T extends  InterfacePadrao >{
   public handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
       console.error('Client Side Error :', errorResponse.error.message);
+
     } else {
       console.error('Server Side Error :', errorResponse);
     }
-        window.alert('Há um problema no servidor, estamos trabando para corrigirmos, por favor tente mais tarde');
-    return throwError('Há um problema no servidor, estamos trabando para corrigirmos, por favor tente mais tarde' + errorResponse);
+    alert(errorResponse.error.message);
+    return throwError( errorResponse.error.message);
   }
 
 }

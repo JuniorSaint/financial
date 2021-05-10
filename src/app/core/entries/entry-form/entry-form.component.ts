@@ -2,13 +2,16 @@
 import { Injector, Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { CategoryServico } from './../../category/category-servico.service';
-import { Validators } from '@angular/forms';
-import { EntryService } from '../entry.service';
-import { EntryInterface } from '../entry-interface';
-import { FormularioPadrao } from 'src/app/share/formulario-padrao';
-import { CategoryInterface } from '../../category/category-interface';
 
+import { Validators } from '@angular/forms';
+
+import { FormularioPadrao } from 'src/app/share/formulario-padrao';
+import { CategoryInterface } from '../../category/category-shared/category-interface';
+import { CategoryServico } from '../../category/category-shared/category-servico.service';
+import { EntryInterface } from '../entry-shared/entry-interface';
+import { EntryService } from '../entry-shared/entry.service';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-entry-form',
@@ -64,7 +67,7 @@ export class EntryFormComponent extends FormularioPadrao<EntryInterface> impleme
       description: [null, Validators.required],
       typeEntry: [null, Validators.required],
       amount: [null, Validators.required],
-      dateLaunch: [null, Validators.required],
+      dateLaunch: ['', Validators.required],
       paid: [null, Validators.required],
       category: [null, Validators.required]
     });

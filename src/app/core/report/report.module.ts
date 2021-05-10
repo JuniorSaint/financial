@@ -1,10 +1,12 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from './../../share/primeng.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReportRoutingModule } from './report-routing.module';
-import { ReportComponent } from './report.component';
+
 import { MaterialModule } from 'src/app/share/material.module';
+import { ReportComponent } from './report.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { MaterialModule } from 'src/app/share/material.module';
     ReportRoutingModule,
     MaterialModule,
     PrimengModule,
+    FormsModule,
+    ReactiveFormsModule
     
   ]
 })

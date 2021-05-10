@@ -1,11 +1,12 @@
-import { UserService } from './../user.service';
-import { UserInterface } from './../user-interface';
+
+import { UserInterface } from '../user-shared/user-interface';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
+import { UserService } from '../user-shared/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -28,17 +29,19 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
 
     this.subscription = this.servico.get()
-                        .subscribe(
-                          dados => this.dataSource = dados,
-                          erro => console.log(erro),
-                          () => console.log(this.dataSource)
+      .subscribe(
+        dados => this.dataSource = dados,
+        erro => console.log(erro),
 
-                        );
+      );
 
   }
-novo(){
-  this.router.navigate([`user/new`]);
-}
+
+  // ********************** btn Criar novo   **********************
+
+  novo() {
+    this.router.navigate([`user/new`]);
+  }
 
 
   // ********************** Deletar  **********************
@@ -59,7 +62,7 @@ novo(){
           this.servico.delete(id)
             .subscribe(
               () => this.snackBar.open('Apagado com sucesso', '', { duration: 2000 }),
-              error => this.snackBar.open(`Erro ao deletar ${ error }`, '', { duration: 2000 }),
+              error => this.snackBar.open(`Erro ao deletar ${error}`, '', { duration: 2000 }),
               () => this.ngOnInit()
             );
         }
@@ -69,13 +72,13 @@ novo(){
 
 
 
-   // ********************** Lista de cabeçalho da tabela  **********************
+  // ********************** Lista de cabeçalho da tabela  **********************
 
-   displayedColumns: string[] = ['name',   'category', 'type','date', 'amount','action'];
+  displayedColumns: string[] = ['name', 'category', 'type', 'date', 'amount', 'action'];
 
 
 
-     // ********************** NG On Destroy  **********************
+  // ********************** NG On Destroy  **********************
 
   ngOnDestroy(): void {
 

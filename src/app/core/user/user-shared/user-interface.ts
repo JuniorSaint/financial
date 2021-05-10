@@ -3,11 +3,10 @@ import { InterfacePadrao } from "src/app/share/interface-padrao"
 export interface Phone{ 
   _id?: string,
   phoneType: string, 
-  phoneNumber: number, 
+  phoneNumber: string, 
   social: string }
 
 export interface UserInterface extends InterfacePadrao{
-
 
   _id?: string,
   name: string,
@@ -18,6 +17,5 @@ export interface UserInterface extends InterfacePadrao{
   repPassword : string,
   active: boolean,
   userKind: string,
-  
-
+  token?: string;
 }

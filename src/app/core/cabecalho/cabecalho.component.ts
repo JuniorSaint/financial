@@ -1,3 +1,7 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../auth/auth-shared/auth.service';
+import { UserInterface } from './../user/user-shared/user-interface';
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -8,14 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabecalhoComponent implements OnInit {
 
-  constructor() { }
+  authEnticated$!: Observable<boolean>;
+  user$!: Observable<UserInterface>;
+  subscription!: Subscription;
+
+  constructor(
+    private service: AuthService,
+    private router: Router
+  ) { }
 
 
   ngOnInit() {
 
+ 
 
+  }
 
-
+  logOut(){
+    this.service.logOut();
+    this.router.navigate(['login']);
   }
 
 }

@@ -20,7 +20,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Categoria</mat-label>
             <input matInput formControlName="category" required autocomplete="off" autofocus>
-            <mat-error *ngIf="formulario.controls['category'].hasError('required') && formulario.touched && formulario.pristine">
+            <mat-error *ngIf="formulario.controls['category'].hasError('required') && (formulario.touched || formulario.touched)">
               Categoria é <strong style="letter-spacing: 1px;"> Obrigatório </strong>
             </mat-error>
           </mat-form-field>
@@ -28,7 +28,7 @@
           <mat-form-field class="example-full-width" style="margin-left: 10px;">
             <mat-label>Descrição</mat-label>
             <input matInput formControlName="description" required autocomplete="off" autofocus>
-            <mat-error *ngIf="formulario.controls['description'].hasError('required') && formulario.touched && formulario.pristine">
+            <mat-error *ngIf="formulario.controls['description'].hasError('required') && (formulario.touched || formulario.touched)">
               Descrição é <strong style="letter-spacing: 1px;"> Obrigatório </strong>
             </mat-error>
           </mat-form-field>
@@ -36,7 +36,7 @@
         <div id="btnActions">
           <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid" class="btn-salvar"> {{ txtBtn }}
           </button>
-          <button mat-raised-button (click)="clearFields()" class="btn-voltar">Limpar Campos</button>
+          <button mat-raised-button (click)="clearFields()" class="btn-voltar">Limpar</button>
         </div>
 
 

@@ -3,7 +3,7 @@ import { Inject, Injector, AfterContentChecked, Component } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { InterfacePadrao } from './interface-padrao';
 import { CrudServico } from './crud-servico';
@@ -24,7 +24,7 @@ export abstract class FormularioPadrao<T extends InterfacePadrao> implements Aft
   pageTitle!: string;
   txtBtn!: string;
   formulario!: FormGroup;
-  titulo!: Title;
+
   formValue!: T;
 
   //  ********************** Variáveis do inject   **********************
@@ -114,7 +114,7 @@ export abstract class FormularioPadrao<T extends InterfacePadrao> implements Aft
     this.servico.create(formValue)
       .subscribe(
         () => this.snackBar.open('Formulário salvo com sucesso', '', { duration: 2000 }),
-        error => this.snackBar.open('Erro ao salvar o formulário', error, { duration: 2000 }),
+        error => this.snackBar.open(error.error.message, '', { duration: 2000 }),
         () => this.formulario.reset()
       )
   }
@@ -128,5 +128,20 @@ export abstract class FormularioPadrao<T extends InterfacePadrao> implements Aft
         () => this.router.navigate([`/${this.rotaVoltar}`])
       )
   }
+
+
+  ptBR = {
+    firstDayOfWeek: 0,
+    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+    dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
+    monthNames: [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+        'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ],
+    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    today: 'Hoje',
+    clear: 'Limpar'
+}
 
 }

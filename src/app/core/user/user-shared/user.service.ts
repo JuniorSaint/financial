@@ -1,3 +1,5 @@
+import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { UserInterface } from './user-interface';
 import { Injectable, Injector } from '@angular/core';
 

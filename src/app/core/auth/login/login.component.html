@@ -1,4 +1,5 @@
 <main>
+    <form [formGroup]="formulario">
     <div id="container">
 
         <div class="login-div">
@@ -9,8 +10,8 @@
 
 
                 <mat-form-field class="example-full-width">
-                    <mat-label>Usuário</mat-label>
-                    <input matInput autocomplete="off" required autofocus>
+                    <mat-label>Email</mat-label>
+                    <input matInput autocomplete="off" required autofocus formControlName="email" >
                     <span class="material-icons" matSuffix> person </span>
                 </mat-form-field>
 
@@ -19,7 +20,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Senha</mat-label>
 
-                    <input matInput [type]="hide ? 'password' : 'text'" required>
+                    <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
 
                     <button style="font-size: 20px;" mat-icon-button matSuffix (click)="hide = !hide"
                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -28,7 +29,8 @@
                 </mat-form-field>
 
             </div>
-            <button class="signin-button">Login</button>
+            <button class="signin-button" (click)="onSubmit()">Login</button>
         </div>
     </div>
+</form>
 </main>

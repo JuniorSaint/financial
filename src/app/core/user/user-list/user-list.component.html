@@ -1,6 +1,3 @@
-
-
-
 <div id="container">
 
   <mat-card id="card-div">
@@ -20,48 +17,44 @@
 
     <p-table [value]="dataSource">
       <ng-template pTemplate="header">
-          <tr>
-              <th>Nome/login</th>
-              <th>Tipo de Usuário</th>
-              <th>Ativo</th>
-              <th>Telefone</th>
-              <th>Ação</th>
-          </tr>
+        <tr>
+          <th>Nome/login</th>
+          <th>Tipo de Usuário</th>
+          <th>Ativo</th>
+          <th>Telefone</th>
+          <th>Ação</th>
+        </tr>
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
-          <tr>
-              <td> {{ dataSource.name }} <br> {{dataSource.login}} </td>
-              <td> {{ dataSource.userKind }} </td>
-              <td> {{ dataSource.active }} </td>
-              <td> {{ dataSource.phone.phoneType }} </td>
-              <td> 
-              
-                
-<button mat-mini-fab [routerLink]="[dataSource._id]" color="primary"
-aria-label="Example icon button with a plus one icon">
-<span class="material-icons">
-  edit
-</span>
-</button>
-<button mat-mini-fab color="accent" (click)="delete(dataSource._id)"
-aria-label="Example icon button with a plus one icon" style="margin-left: 10px;">
-<span class="material-icons">
-  delete
-</span>
-</button>
-              
-              </td>
-          </tr>
+        <tr>
+
+          <td> {{ dataSource.name }} <br> {{dataSource.login}} </td>
+          <td> {{ dataSource.userKind }} </td>
+          <td> {{ dataSource.active }} </td>
+          <td>
+            <span *ngFor="let pho of dataSource.phone">
+              {{ pho?.phoneNumber}} <br>
+            </span>
+
+          </td>
+
+          <td>
+            <button mat-mini-fab [routerLink]="[dataSource._id]" color="primary"
+              aria-label="Example icon button with a plus one icon">
+              <span class="material-icons">
+                edit
+              </span>
+            </button>
+            <button mat-mini-fab color="accent" (click)="delete(dataSource._id)"
+              aria-label="Example icon button with a plus one icon" style="margin-left: 10px;">
+              <span class="material-icons">
+                delete
+              </span>
+            </button>
+          </td>
+
+        </tr>
       </ng-template>
-  </p-table>
-
-
+    </p-table>
   </mat-card>
-
-
 </div>
-
-
-
-
-
