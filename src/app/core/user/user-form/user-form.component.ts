@@ -106,11 +106,8 @@ export class UserFormComponent extends FormularioPadrao<UserInterface> implement
             }
             )
           }
-
-
         )
     }
-
   }
 
 
