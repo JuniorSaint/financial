@@ -3,32 +3,31 @@ import Configs from "./config"
 
 class Auth {
 
-//     validate(req, res, next ) {
+    validate(req, res, next ) {
 
-//         const token = req.headers['x-access-token'];
+        const token = req.headers['Authorization'];
 
-//         if(token){
+        if(token){
+            jwt.verify(token, Configs.keyJWT, function(err, decoded){
 
-//             jwt.verify(token, Configs.secret, function(err, decoded){
+                if(err){
+                    return res.status(403).send({
+                        success: false,
+                        message: '403 - token inválido'
+                    });
+                }else{
+                    next();
+                }
 
-//                 if(err){
-//                     return res.status(403).send({
-//                         success: false,
-//                         message: '403 - token inválido'
-//                     });
-//                 }else{
-//                     next();
-//                 }
+            })
+        }else {
 
-//             })
-//         }else {
-
-//             return res.status(401).send({
-//                 success: false,
-//                 message: '401 - não autorizado'
-//             })
-//         }
-//     }
+            return res.status(401).send({
+                success: false,
+                message: '401 - não autorizado'
+            })
+        }
+    }
 }
 
 export default new Auth();

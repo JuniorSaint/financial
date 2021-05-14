@@ -1,7 +1,7 @@
 
 import { HttpClient, HttpErrorResponse,  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 
 import { UserInterface } from '../../user/user-shared/user-interface';
@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
 
+
   constructor(
     private http: HttpClient,
 
@@ -20,6 +21,8 @@ export class AuthService {
 
   private readonly URL = 'http://localhost:5000/auth/';
 
+  // private subUser: BehaviorSubject<UserInterface> = new BehaviorSubject('');
+    // private subLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   login(credentials: {email: string, password: string}): Observable<UserInterface> {
     return this.http

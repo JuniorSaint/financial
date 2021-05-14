@@ -3,10 +3,27 @@ import config from '../infra/config'
 import * as HttpStatus from "http-status";
 import UserService from "../services/user-service";
 import Helper from "../infra/helper";
+import userService from '../services/user-service';
 
 
 
 class UserController {
+
+
+    async getBySearch(req, res) {
+
+
+        try {
+
+            let valVim = req.req.params.search
+            let searc = await userService.getBySearch({name: valVim });
+            Helper.sendResponse(res, HttpStatus.OK, 'consulta concluída');
+
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     async createUser(req, res) {
         try {
@@ -24,6 +41,8 @@ class UserController {
             console.error(error);
         }
     }
+
+    
 
     async update(req, res) {
         try {

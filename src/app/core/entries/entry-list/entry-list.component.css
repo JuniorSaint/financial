@@ -1,4 +1,9 @@
 
+*{
+  box-sizing: border-box;
+}
+
+
 #container{
   margin-top: 30px;
   display: flex;

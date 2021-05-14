@@ -1,4 +1,5 @@
 
+
 import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -27,6 +28,9 @@ import { UserModule } from './core/user/user-shared/user.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { AuthModule } from './core/auth/auth-shared/auth.module';
+import { StoreModule } from '@ngrx/store';
+
+
 
 @NgModule({
   declarations: [
@@ -45,8 +49,7 @@ import { AuthModule } from './core/auth/auth-shared/auth.module';
     MaterialModule,
     UserModule,
     AuthModule,
-
-
+    StoreModule.forRoot({})
   ],
   providers: [
     { 

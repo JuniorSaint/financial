@@ -9,13 +9,19 @@
           <p style="letter-spacing: 1px; font-size: 1.5rem; "> Lista de entradas </p>
         </div>
         <div>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText placeholder="Search" #searchBy />
+        </span>
+        </div>
+        <div>
           <button mat-raised-button class="btn-novo" [routerLink]="['new']"
             routerLinkActive="router-link-active">Novo</button>
         </div>
       </mat-card>
     </mat-card-header>
 
-    <p-table [value]="dataSource">
+    <p-table [value]="dataSource$">
       <ng-template pTemplate="header">
         <tr>
           <th>Nome/login</th>
@@ -27,7 +33,6 @@
       </ng-template>
       <ng-template pTemplate="body" let-dataSource>
         <tr>
-
           <td> {{ dataSource.name }} <br> {{dataSource.login}} </td>
           <td> {{ dataSource.userKind }} </td>
           <td> {{ dataSource.active }} </td>
@@ -45,7 +50,7 @@
                 edit
               </span>
             </button>
-            <button mat-mini-fab color="accent" (click)="delete(dataSource._id)"
+            <button mat-mini-fab color="accent" (click)="delete(dataSource?._id)"
               aria-label="Example icon button with a plus one icon" style="margin-left: 10px;">
               <span class="material-icons">
                 delete

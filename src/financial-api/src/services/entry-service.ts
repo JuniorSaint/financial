@@ -1,3 +1,4 @@
+import entryRepository from "../repositories/entry-repository";
 import EntryRepository from "../repositories/entry-repository";
      
 class EntryService {
@@ -11,6 +12,7 @@ class EntryService {
     let result = await EntryRepository.find({'dateLaunch': {$gte: startDate, $lte: endDate}}, 'dateLaunch type amount');
     return result;
   }
+
 
   async getByEntry() {
 

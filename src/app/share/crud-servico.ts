@@ -39,6 +39,14 @@ export abstract class CrudServico< T extends  InterfacePadrao >{
       );
   }
 
+  getBySearch(search: string): Observable<T[]> {
+    return this.http.get<T[]>(`${this.URL}/procura/${search}`)
+      .pipe(
+        map( ( dados:any) => dados = dados.result),
+        catchError(this.handleError)
+      );
+  }
+
 
   create(source: T): Observable<T> {
 

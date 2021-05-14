@@ -17,6 +17,10 @@ class UserService {
     return result;
   }
 
+  async getBySearch(search) {
+    let result = await UserRepository.find({search });
+}
+
   async getByOne() {
     let result = await UserRepository.findOne({});
     return result;

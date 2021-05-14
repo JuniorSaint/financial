@@ -7,7 +7,7 @@ import authRouter from './routers/auth-router';
 
 
 import * as cors from 'cors';
-import Auth from './infra/auth';
+import auth from './infra/auth';
 
 class StartUp {
 
@@ -41,10 +41,11 @@ class StartUp {
 
     routes() {
         
+
         this.app.route('/').get((req, res) => {
             res.send({ versao: '0.0.1' });
         });        
-
+        // this.app.use(auth.validate);
         this.app.use('/', authRouter);               
         this.app.use('/', userRouter);        
         this.app.use('/', entryRouter);        
