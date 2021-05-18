@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 
-import { EntryInterface } from './entry-interface';
+import { IEntry } from './entry-interface';
 import { CrudServico } from 'src/app/share/crud-servico';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class EntryService extends CrudServico<EntryInterface> {
+export class EntryService extends CrudServico<IEntry> {
 
   constructor(
     private injector: Injector
@@ -17,8 +17,8 @@ export class EntryService extends CrudServico<EntryInterface> {
   }
 
 
-  getByDate(dateIn:Date, DateEnd:Date): Observable<EntryInterface> {
-    return this.http.get<EntryInterface>(`${this.URL}/dataLaunch/${dateIn}/${DateEnd}`)
+  getByDate(dateIn:Date, DateEnd:Date): Observable<IEntry> {
+    return this.http.get<IEntry>(`${this.URL}/dataLaunch/${dateIn}/${DateEnd}`)
       .pipe(
         map( ( dados:any) => dados = dados.result),
         catchError(this.handleError)

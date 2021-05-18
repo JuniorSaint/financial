@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 
-import { UserInterface } from '../../user/user-shared/user-interface';
+import { IUser } from '../../user/user-shared/user-interface';
 import { tap } from 'rxjs/operators';
 
 
@@ -24,9 +24,9 @@ export class AuthService {
   // private subUser: BehaviorSubject<UserInterface> = new BehaviorSubject('');
     // private subLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  login(credentials: {email: string, password: string}): Observable<UserInterface> {
+  login(credentials: {email: string, password: string}): Observable<IUser> {
     return this.http
-      .post<UserInterface>(`${this.URL}login`, credentials)
+      .post<IUser>(`${this.URL}login`, credentials)
       .pipe(
         tap((u: any) => {
           localStorage.setItem('token', u.token);

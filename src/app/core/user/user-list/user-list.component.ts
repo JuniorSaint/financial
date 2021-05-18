@@ -3,7 +3,7 @@ import { debounceTime } from 'rxjs/operators';
 
 import { ListaPadrao } from './../../../share/lista-padrao';
 
-import { UserInterface } from '../user-shared/user-interface';
+import { IUser } from '../user-shared/user-interface';
 import { Component, Injector, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user-shared/user.service';
 import {  Observable, of, Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import {  Observable, of, Subscription } from 'rxjs';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent extends ListaPadrao<UserInterface> implements OnInit {
+export class UserListComponent extends ListaPadrao<IUser> implements OnInit {
 
 @ViewChild('searchBy') searchBy!: ElementRef;
 subscription!: Subscription;
@@ -39,7 +39,7 @@ subscription!: Subscription;
 
 // ********************** Filtro   ********************** 
 
-filterResource(searchInput: string): Observable<UserInterface[]> {
+filterResource(searchInput: string): Observable<IUser[]> {
     if (searchInput.length === 0) {
         return of([]);
     }

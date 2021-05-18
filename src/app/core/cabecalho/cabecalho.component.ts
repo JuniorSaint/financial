@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../auth/auth-shared/auth.service';
-import { UserInterface } from './../user/user-shared/user-interface';
+import { IUser } from './../user/user-shared/user-interface';
 import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class CabecalhoComponent implements OnInit {
 
   authEnticated$!: Observable<boolean>;
-  user$!: Observable<UserInterface>;
+  user$!: Observable<IUser>;
   subscription!: Subscription;
 
   constructor(

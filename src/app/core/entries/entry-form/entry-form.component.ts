@@ -6,9 +6,9 @@ import { Subscription } from 'rxjs';
 import { Validators } from '@angular/forms';
 
 import { FormularioPadrao } from 'src/app/share/formulario-padrao';
-import { CategoryInterface } from '../../category/category-shared/category-interface';
+import { ICategory } from '../../category/category-shared/category-interface';
 import { CategoryServico } from '../../category/category-shared/category-servico.service';
-import { EntryInterface } from '../entry-shared/entry-interface';
+import { IEntry } from '../entry-shared/entry-interface';
 import { EntryService } from '../entry-shared/entry.service';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
@@ -18,11 +18,11 @@ import 'moment/locale/pt-br';
   templateUrl: './entry-form.component.html',
   styleUrls: ['./entry-form.component.scss']
 })
-export class EntryFormComponent extends FormularioPadrao<EntryInterface> implements OnInit, OnDestroy {
+export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnInit, OnDestroy {
 
 
-  entryByID!: EntryInterface;
-  categoria!: CategoryInterface[];
+  entryByID!: IEntry;
+  categoria!: ICategory[];
   subscription!: Subscription;
 
 

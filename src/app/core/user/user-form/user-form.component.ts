@@ -5,7 +5,7 @@ import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
 import { FormArray, FormGroup, Validators } from '@angular/forms';
 
 import { FormularioPadrao } from 'src/app/share/formulario-padrao';
-import { UserInterface } from '../user-shared/user-interface';
+import { IUser } from '../user-shared/user-interface';
 import { UserService } from '../user-shared/user.service';
 
 
@@ -14,9 +14,9 @@ import { UserService } from '../user-shared/user.service';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent extends FormularioPadrao<UserInterface> implements OnInit, OnDestroy {
+export class UserFormComponent extends FormularioPadrao<IUser> implements OnInit, OnDestroy {
 
-  formUpdate!: UserInterface;
+  formUpdate!: IUser;
 
   subscription!: Subscription;
   emailUser$!: any;

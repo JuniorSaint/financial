@@ -1,13 +1,13 @@
 import { Injectable, Injector } from '@angular/core';
 
-import { CategoryInterface } from './category-interface';
+import { ICategory } from './category-interface';
 import { CrudServico } from 'src/app/share/crud-servico';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryServico extends CrudServico<CategoryInterface> {
+export class CategoryServico extends CrudServico<ICategory> {
 
 
   constructor(

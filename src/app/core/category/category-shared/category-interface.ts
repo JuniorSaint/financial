@@ -1,6 +1,6 @@
 import { InterfacePadrao } from "src/app/share/interface-padrao"
 
-export interface CategoryInterface extends InterfacePadrao {
+export interface ICategory extends InterfacePadrao {
 
   _id?: string,
   category: string,

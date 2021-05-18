@@ -5,7 +5,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { ReportService } from './report.service';
-import { EntryInterface } from '../entries/entry-shared/entry-interface';
+import { IEntry } from '../entries/entry-shared/entry-interface';
 
 
 import * as moment from 'moment';
@@ -25,7 +25,7 @@ export class ReportComponent extends ConfiguracaoDate implements OnInit, OnDestr
   totalDespesa!: number;
   totalSaldo!: number;
   saldo!: number;
-  dataSource$!: EntryInterface[];
+  dataSource$!: IEntry[];
   subscription!: Subscription;
   formulario!: FormGroup
 

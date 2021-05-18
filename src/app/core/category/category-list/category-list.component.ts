@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
-import { CategoryInterface } from '../category-shared/category-interface';
+import { ICategory } from '../category-shared/category-interface';
 
 import { Router } from '@angular/router';
 import { CategoryServico } from '../category-shared/category-servico.service';
@@ -22,7 +22,7 @@ export class CategoryListComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
-  dataSource!: CategoryInterface[];
+  dataSource!: ICategory[];
 
 
   constructor(

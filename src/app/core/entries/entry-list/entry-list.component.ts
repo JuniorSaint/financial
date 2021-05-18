@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
-import { EntryInterface } from '../entry-shared/entry-interface';
+import { IEntry } from '../entry-shared/entry-interface';
 import { EntryService } from '../entry-shared/entry.service';
 
 
@@ -16,7 +16,7 @@ export class EntryListComponent implements OnInit {
 
   subscription!: Subscription;
 
-  dataSource!: EntryInterface[];
+  dataSource!: IEntry[];
 
 
   constructor(

@@ -5,8 +5,7 @@ import { Validators } from '@angular/forms';
 import { FormularioPadrao } from './../../../share/formulario-padrao';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { CategoryServico } from '../category-shared/category-servico.service';
-import { CategoryInterface } from '../category-shared/category-interface';
-import * as moment from 'moment';
+import { ICategory } from '../category-shared/category-interface';
 import 'moment/locale/pt-br';
 
 @Component({
@@ -14,11 +13,11 @@ import 'moment/locale/pt-br';
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.css']
 })
-export class CategoryFormComponent  extends FormularioPadrao<CategoryInterface> implements OnInit  {
+export class CategoryFormComponent  extends FormularioPadrao<ICategory> implements OnInit  {
 
     @ViewChild(CategoryListComponent)  formList!: CategoryListComponent
 
-  formUpdate!: CategoryInterface;
+  formUpdate!: ICategory;
 
   constructor(
     protected injector: Injector,
@@ -71,7 +70,7 @@ export class CategoryFormComponent  extends FormularioPadrao<CategoryInterface> 
 
    // ********************* Sobrepondo ao método de salvar  ********************
 
-  salvar(formValue: CategoryInterface): void {
+  salvar(formValue: ICategory): void {
 
     this.servico.create(formValue)
       .subscribe(

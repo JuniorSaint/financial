@@ -6,7 +6,7 @@ export interface Phone{
   phoneNumber: string, 
   social: string }
 
-export interface UserInterface extends InterfacePadrao{
+export interface IUser extends InterfacePadrao{
 
   _id?: string,
   name: string,

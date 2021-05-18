@@ -1,6 +1,6 @@
 import { InterfacePadrao } from "src/app/share/interface-padrao"
 
-export interface EntryInterface extends InterfacePadrao {
+export interface IEntry extends InterfacePadrao {
 
   _id?: string,
   name: string,
