@@ -1,6 +1,6 @@
 import { InterfacePadrao } from "src/app/share/interface-padrao"
 
-export interface Phone{ 
+export interface IPhone{ 
   _id?: string,
   phoneType: string, 
   phoneNumber: string, 
@@ -10,7 +10,7 @@ export interface IUser extends InterfacePadrao{
 
   _id?: string,
   name: string,
-  phone: Phone[],
+  phone: IPhone[],
   email: string,
   login: string,
   password: string,

@@ -6,7 +6,7 @@ import { FormularioPadrao } from './../../../share/formulario-padrao';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { CategoryServico } from '../category-shared/category-servico.service';
 import { ICategory } from '../category-shared/category-interface';
-import 'moment/locale/pt-br';
+
 
 @Component({
   selector: 'app-category-form',

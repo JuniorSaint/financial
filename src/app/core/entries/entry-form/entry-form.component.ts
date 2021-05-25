@@ -9,9 +9,10 @@ import { FormularioPadrao } from 'src/app/share/formulario-padrao';
 import { ICategory } from '../../category/category-shared/category-interface';
 import { CategoryServico } from '../../category/category-shared/category-servico.service';
 import { IEntry } from '../entry-shared/entry-interface';
+
+import { format } from 'date-fns'
+
 import { EntryService } from '../entry-shared/entry.service';
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-entry-form',
@@ -37,6 +38,7 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
     'Despesa', 'Receita'
   ];
 
+
   // ********************* Constructor  ********************
 
   constructor(
@@ -54,6 +56,8 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
 
     this.popularForm();  // função de popular o forumulário
 
+
+
     this.subscription = this.serviceCat.get()
        .subscribe(
         dados => this.categoria = dados,
@@ -67,7 +71,7 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
       description: [null, Validators.required],
       typeEntry: [null, Validators.required],
       amount: [null, Validators.required],
-      dateLaunch: ['', Validators.required],
+      dateLaunch: [format(new Date, 'dd/MM/yyyy' ), Validators.required],
       paid: [null, Validators.required],
       category: [null, Validators.required]
     });

@@ -7,11 +7,6 @@ import { Subscription } from 'rxjs';
 import { ReportService } from './report.service';
 import { IEntry } from '../entries/entry-shared/entry-interface';
 
-
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
-
-
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',

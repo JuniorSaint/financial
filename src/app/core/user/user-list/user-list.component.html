@@ -35,7 +35,7 @@
         <tr>
           <td> {{ dataSource.name }} <br> {{dataSource.login}} </td>
           <td> {{ dataSource.userKind }} </td>
-          <td> {{ dataSource.active }} </td>
+          <td> {{ (dataSource.active)  ? 'Sim' : 'Não'  }} </td>
           <td>
             <span *ngFor="let pho of dataSource.phone">
               {{ pho?.phoneNumber}} <br>

@@ -1,6 +1,6 @@
 
 
-import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -54,10 +54,6 @@ import { StoreModule } from '@ngrx/store';
   providers: [
     { 
       provide: LOCALE_ID, useValue: 'pt-BR' 
-    },
-    {
-      provide: ErrorHandler,
-      useClass: GlobalErrorHandler
     },
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true

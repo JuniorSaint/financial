@@ -1,3 +1,4 @@
+import {  IPhone } from './../user-shared/user-interface';
 
 import { Subscription } from 'rxjs';
 
@@ -67,48 +68,68 @@ export class UserFormComponent extends FormularioPadrao<IUser> implements OnInit
       active: [null, Validators.required],
       userKind: [null, Validators.required]
     }, { validator: [this.matchingPasswords] },
-  );
+    );
   }
 
   // ********************* Comparação de passaword  ********************
 
   matchingPasswords(group: FormGroup) {
 
-    const password = group.get('password')?.value ?? '' ;
-    const repPassword = group.get('repPassword')?.value ?? '' ;
+    const password = group.get('password')?.value ?? '';
+    const repPassword = group.get('repPassword')?.value ?? '';
 
-    if(repPassword.trim() + password.trim()) {
-        return repPassword !== password ? { senhaMatching: false } : null;
+    if (repPassword.trim() + password.trim()) {
+      return repPassword !== password ? { senhaMatching: false } : null;
     } else {
-        return null;
+      return null;
     }
   }
 
   // ********************* Função de Popular Formulário  ********************
 
   popularForm() {
+    
     if (this.urlAtiva !== 'new') {
       this.servico.getByID(this.urlAtiva)
         .subscribe(
           dados => this.formUpdate = dados,
           error => console.log(error),
           () => {
-            this.formulario.patchValue({
-              _id: this.formUpdate._id,
-              name: this.formUpdate.name,
-              phone: this.fb.array([this.addPhone()]),
-              email: this.formUpdate.email,
-              login: this.formUpdate.login,
-              password: this.formUpdate.password,
-              repPassword: this.formUpdate.repPassword,
-              active: this.formUpdate.active,
-              userKind: this.formUpdate.userKind,
-            }
-            )
+            this.patchFormA(this.formUpdate);
           }
         )
+       
     }
   }
+
+  patchFormA(formUpdate: IUser){
+    this.formulario.patchValue({
+      _id: this.formUpdate._id,
+      name: this.formUpdate.name,
+      phone: this.formUpdate.phone,
+      email: this.formUpdate.email,
+      login: this.formUpdate.login,
+      password: this.formUpdate.password,
+      repPassword: this.formUpdate.repPassword,
+      active: this.formUpdate.active,
+      userKind: this.formUpdate.userKind,
+    })
+    this.formulario.setControl('phone', this.setPhoneExist(formUpdate.phone))
+  }
+
+  setPhoneExist(phoneExist: IPhone[]): FormArray{
+    const formArray = new FormArray([]);
+    phoneExist.forEach( p => {
+      formArray.push (this.fb.group({
+        phoneType: p.phoneType, 
+        phoneNumber: p.phoneNumber, 
+        social: p.social 
+      }))
+    })
+    return formArray;
+  }
+
+
 
 
   // Inicio para adicionar telefone
