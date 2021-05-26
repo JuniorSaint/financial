@@ -34,7 +34,7 @@
       <ng-template pTemplate="body" let-dataSource>
         <tr>
           <td> {{ dataSource.name }} <br> {{dataSource.login}} </td>
-          <td> {{ dataSource.userKind }} </td>
+          <td> {{ (dataSource.userKind) === 'user' ? 'Usuário': 'Administrador' }} </td>
           <td> {{ (dataSource.active)  ? 'Sim' : 'Não'  }} </td>
           <td>
             <span *ngFor="let pho of dataSource.phone">

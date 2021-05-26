@@ -19,7 +19,7 @@ export class UserFormComponent extends FormularioPadrao<IUser> implements OnInit
 
   formUpdate!: IUser;
 
-  subscription!: Subscription;
+
   emailUser$!: any;
   emalMatch = true;
 
@@ -159,6 +159,7 @@ export class UserFormComponent extends FormularioPadrao<IUser> implements OnInit
   // ***********************  NgOnDestroy ****************fxFlex="
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+
   }
+
 }

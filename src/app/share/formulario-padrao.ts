@@ -75,7 +75,7 @@ export abstract class FormularioPadrao<T extends InterfacePadrao> implements Aft
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
-          this.router.navigate([`/${this.rotaVoltar}`]);
+          this.router.navigate([`${this.rotaVoltar}`]);
         }
       }
     );

@@ -6,7 +6,7 @@ import { ListaPadrao } from './../../../share/lista-padrao';
 import { IUser } from '../user-shared/user-interface';
 import { Component, Injector, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user-shared/user.service';
-import {  Observable, of, Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,50 +16,42 @@ import {  Observable, of, Subscription } from 'rxjs';
 })
 export class UserListComponent extends ListaPadrao<IUser> implements OnInit {
 
-@ViewChild('searchBy') searchBy!: ElementRef;
-subscription!: Subscription;
+  @ViewChild('searchBy') searchBy!: ElementRef;
+  subscription!: Subscription;
 
   constructor(
 
     protected servico: UserService,
     protected injector: Injector,
-  ) { super(injector,  servico, ) }
+  ) { super(injector, servico,) }
 
 
 
   ngOnInit() {
-    this.searchFilter();
 
-    this.servico.get().subscribe(
-      dados => this.dataSource$ = dados,
-      erro => console.error(erro),
-      () => console.log(this.dataSource$)
-    )
-}
 
-// ********************** Filtro   ********************** 
+    this.CompleteList();
+  }
 
-filterResource(searchInput: string): Observable<IUser[]> {
+  // ********************** Filtro   ********************** 
+
+  filterResource(searchInput: string): Observable<IUser[]> {
     if (searchInput.length === 0) {
-        return of([]);
+      return of([]);
     }
     return this.servico.getBySearch(searchInput)
-}
+  }
 
 
-searchFilter() {
-    // let keyUp$ =  fromEvent(this.searchBy.nativeElement, 'keyup')
-    // this.dataSource$ = keyUp$
-    //     .pipe(
-    //         debounceTime(500),
-    //         switchMap( _ => this.filterResource(this.searchInput))
-    //     )
-}
 
-  
+
+
 
   // ********************** Lista de cabeçalho da tabela  **********************
 
   displayedColumns: string[] = ['name', 'category', 'type', 'date', 'amount', 'action'];
+
+
+
 
 }

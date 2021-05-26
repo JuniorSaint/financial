@@ -107,6 +107,8 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
 
   }
 
+  
+
   // ********************* NG OnDestroy  ********************
 
   ngOnDestroy() {
