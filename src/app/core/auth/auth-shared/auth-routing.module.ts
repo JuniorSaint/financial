@@ -1,3 +1,4 @@
+import { UserFormComponent } from './../../user/user-form/user-form.component';
 import { Title } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
@@ -10,7 +11,7 @@ const routes: Routes = [
 
 
   { path: 'auth/login', component: LoginComponent, data: { Title: 'Login' } },
-
+  { path: 'auth/register', component: UserFormComponent, data: { Title: 'Registro de Usuário'} }
   
 ];
 

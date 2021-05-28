@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { GlobalErrorHandler } from './share/global-error/global-erro';
 import { SharedModule } from './share/shared.module';
 import { CabecalhoComponent } from './core/cabecalho/cabecalho.component';
 import { MaterialModule } from './share/material.module';

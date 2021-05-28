@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.service.login(credentials)
     .subscribe(
       user => {
-        this.snack.open(`Logado com sucesso, Seja bem vindo' + ${user.login} !`, 'OK', {duration: 4000}),
+        this.snack.open(`Logado com sucesso, Seja bem vindo' + ${user.login} !`, 'OK', {duration: 2000}),
         this.router.navigate(['report']);
       },
       err => {

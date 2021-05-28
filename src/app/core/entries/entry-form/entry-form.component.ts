@@ -24,7 +24,7 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
 
   entryByID!: IEntry;
   categoria!: ICategory[];
-  subscription!: Subscription;
+  subscription2!: Subscription;
 
 
 
@@ -58,7 +58,7 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
 
 
 
-    this.subscription = this.serviceCat.get()
+    this.subscription2 = this.serviceCat.get()
        .subscribe(
         dados => this.categoria = dados,
         error => console.log(error),
@@ -113,7 +113,7 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
 
   ngOnDestroy() {
 
-    this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
 
   }
 

@@ -4,7 +4,7 @@
 
       <mat-card id="header-card">
         <div>
-          <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle  }} </p>
+          <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle }} </p>
         </div>
         <div>
 
@@ -56,6 +56,7 @@
 
         <div>
           <div class="p-fluid p-formgrid p-grid">
+
             <div class="p-field p-col">
               <label for="pago">Esta Pago</label>
               <p-dropdown id="pago" placeholder=" _ " [options]="simNao" formControlName="paid" optionLabel="label"
@@ -64,37 +65,28 @@
 
             </div>
 
-
             <div class="p-field p-col">
 
-                <label for="icon">Data Final</label>
-                <p-calendar formControlName="dateLaunch" dataType="string"
-                [showIcon]="true" inputId="icon" dateFormat="dd/mm/yy">
-                </p-calendar>
-
+              <label for="icon">Data Final</label>
+              <p-calendar formControlName="dateLaunch" dataType="string" [showIcon]="true" inputId="icon"
+                dateFormat="dd/mm/yy">
+              </p-calendar>
 
             </div>
-
-
           </div>
         </div>
 
-
-
         <div>
-
-
 
           <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
               <label for="categoria">Categoria</label>
-               <p-dropdown placeholder=" _ " [options]="categoria" optionLabel="category" formControlName="category" optionValue="category"
-                [showClear]="true" id="categoria">
+              <p-dropdown placeholder=" _ " [options]="categoria" optionLabel="category" formControlName="category"
+                optionValue="_id" [showClear]="true" id="categoria">
               </p-dropdown>
 
             </div>
           </div>
-
 
         </div>
 
@@ -105,4 +97,3 @@
     <button mat-raised-button (click)="voltar()" class="btn-voltar">Voltar</button>
   </mat-card>
 </div>
-

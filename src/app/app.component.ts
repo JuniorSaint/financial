@@ -1,7 +1,10 @@
+import { AuthService } from './core/auth/auth-shared/auth.service';
 import { Title } from '@angular/platform-browser';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IUser } from './core/user/user-shared/user-interface';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+
   ) {
+
+
 
   }
 

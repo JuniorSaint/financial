@@ -76,7 +76,6 @@ import { Subscription } from "rxjs";
             .subscribe(
                 dados => this.dataSource$ = dados,
                 erro => console.error(erro),
-                () => console.log(this.dataSource$)
             );
     }
 

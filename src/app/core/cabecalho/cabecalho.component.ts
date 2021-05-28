@@ -12,14 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabecalhoComponent implements OnInit {
 
-  authEnticated$!: Observable<boolean>;
-  user$!: Observable<IUser>;
+  autheticated$! : Observable<boolean>;
+  user$!: Observable<IUser>
+
   subscription!: Subscription;
 
   constructor(
     private service: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private authService: AuthService
+  ) {
+
+    this.autheticated$ = this.authService.isAuthenticated();
+    this.user$ = this.authService.getUser();
+
+   }
 
 
   ngOnInit() {

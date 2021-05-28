@@ -21,9 +21,9 @@ export class CategoryFormComponent  extends FormularioPadrao<ICategory> implemen
 
   constructor(
     protected injector: Injector,
-    protected servico: CategoryServico,
+    protected service: CategoryServico,
 )
-  { super(injector, 'category/new' , servico ); }
+  { super(injector, 'category/new' , service ); }
 
 
   // ********************* NG on Init  ********************
@@ -66,13 +66,14 @@ export class CategoryFormComponent  extends FormularioPadrao<ICategory> implemen
 
   clearFields(){
     this.formulario.reset();
+    this.router.navigate(['category/new']);
   }
 
    // ********************* Sobrepondo ao método de salvar  ********************
 
   salvar(formValue: ICategory): void {
 
-    this.servico.create(formValue)
+    this.service.create(formValue)
       .subscribe(
         () => this.snackBar.open('Formulário salvo com sucesso', '', { duration: 2000 }),
         error => this.snackBar.open('Erro ao salvar o formulário', error, { duration: 2000 }),
@@ -80,6 +81,8 @@ export class CategoryFormComponent  extends FormularioPadrao<ICategory> implemen
       )
         this.formList.recicleNgOn();
   }
+
+
 
 
 }

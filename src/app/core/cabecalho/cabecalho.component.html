@@ -3,31 +3,31 @@
 <mat-menu #menu="matMenu">
   <nav>
 
-  <button mat-menu-item [routerLink]="['/report']" routerLinkActive="mat-accent">
-    <mat-icon>notifications_off</mat-icon>
-    <span>Relatório</span>
-  </button>
+    <button mat-menu-item [routerLink]="['/report']" routerLinkActive="mat-accent">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Relatório</span>
+    </button>
 
-  <button mat-menu-item [routerLink]="['/category']" routerLinkActive="router-link-active">
-    <mat-icon>notifications_off</mat-icon>
-    <span>Categoria</span>
-  </button>
+    <button mat-menu-item [routerLink]="['/category']" routerLinkActive="router-link-active">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Categoria</span>
+    </button>
 
-  <button mat-menu-item [routerLink]="['/entry']" routerLinkActive="router-link-active">
-    <mat-icon> paid </mat-icon>
-    <span>Categoria</span>
-  </button>
+    <button mat-menu-item [routerLink]="['/entry']" routerLinkActive="router-link-active">
+      <mat-icon> paid </mat-icon>
+      <span>Categoria</span>
+    </button>
 
-  <button mat-menu-item [routerLink]="['/user']" routerLinkActive="router-link-active">
-    <span class="material-icons"> person </span>
-    <span>Usuário</span>
-  </button>
+    <button mat-menu-item [routerLink]="['/user']" routerLinkActive="router-link-active">
+      <span class="material-icons"> person </span>
+      <span>Usuário</span>
+    </button>
 
-  <button mat-menu-item [routerLink]="['/login']" routerLinkActive="router-link-active">
-    <span class="material-icons"> login </span>
-    <span>Sign in</span>
-  </button>
-</nav>
+    <button mat-menu-item [routerLink]="['/login']" routerLinkActive="router-link-active">
+      <span class="material-icons"> login </span>
+      <span>Sign in</span>
+    </button>
+  </nav>
 </mat-menu>
 
 <!-- Menu  -->
@@ -37,55 +37,64 @@
 <mat-card>
   <nav>
 
-  <mat-toolbar id="container-menu">
-    <div id="btn-side">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>menu</mat-icon>
-      </button>
+    <mat-toolbar id="container-menu">
 
-    </div>
-
-    <div id="btn-menu">
-      <div id="btn-esquerdo">
-        <button mat-button [routerLink]="['/report']" routerLinkActive="router-link-active">
-          <span class="material-icons">
-            payments
-          </span>
-          <span>Relatório</span>
-        </button>
-
-        <button mat-button [routerLink]="['/category/new']" routerLinkActive="router-link-active">
-          <mat-icon>notifications_off</mat-icon>
-          <span>Categoria</span>
-        </button>
-
-        <button mat-button [routerLink]="['/entry']" routerLinkActive="router-link-active">
-          <mat-icon> paid </mat-icon>
-          <span>Entradas</span>
-        </button>
-
-        <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active">
-          <span class="material-icons"> person </span>
-          <span>Usuário</span>
+      <div id="btn-side">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>menu</mat-icon>
         </button>
 
       </div>
 
-      <div id="btn-direito">
-        <button mat-button (click)="logOut()">
-          <span > <i class="fas fa-sign-in-alt icon-menu"></i> </span>
-          <span>Sign Out</span>
-        </button>
+      <div id="btn-menu">
+        <ng-container *ngIf="(autheticated$ |async) && (user$ | async)">
+          <div id="btn-esquerdo">
+            <button mat-button [routerLink]="['/report']" routerLinkActive="router-link-active">
+              <span class="material-icons">
+                payments
+              </span>
+              <span>Relatório</span>
+            </button>
+
+            <button mat-button [routerLink]="['/category/new']" routerLinkActive="router-link-active">
+              <mat-icon>notifications_off</mat-icon>
+              <span>Categoria</span>
+            </button>
+
+            <button mat-button [routerLink]="['/entry']" routerLinkActive="router-link-active">
+              <mat-icon> paid </mat-icon>
+              <span>Entradas</span>
+            </button>
+
+            <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active">
+              <span class="material-icons"> person </span>
+              <span>Usuário</span>
+            </button>
+
+          </div>
+
+          <div id="side-right">
+            <div>
+              {{ (user$ | async)?.name}}
+            </div>
+            <div>
+              <button mat-button (click)="logOut()">Logout</button>
+            </div>
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="!(autheticated$ |async)">
 
 
-        <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
-          <span > <i class="fas fa-sign-in-alt icon-menu"></i> </span>
-          <span>Sign In</span>
-        </button>
+          <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">
+            <span> <i class="fas fa-sign-in-alt icon-menu"></i> </span>
+            <span>Sign In</span>
+          </button>
+
+        </ng-container>
 
       </div>
-
-    </div>
-  </mat-toolbar>
-</nav>
+    </mat-toolbar>
+  </nav>
 </mat-card>

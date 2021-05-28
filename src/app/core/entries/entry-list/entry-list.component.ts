@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ICategory } from 'src/app/core/category/category-shared/category-interface';
+import { CategoryServico } from './../../category/category-shared/category-servico.service';
+import { Component, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { BotaoConfirmaComponent } from 'src/app/share/botao-confirma/botao-confirma.component';
+import { ListaPadrao } from 'src/app/share/lista-padrao';
 import { IEntry } from '../entry-shared/entry-interface';
 import { EntryService } from '../entry-shared/entry.service';
 
@@ -12,61 +12,37 @@ import { EntryService } from '../entry-shared/entry.service';
   templateUrl: './entry-list.component.html',
   styleUrls: ['./entry-list.component.css']
 })
-export class EntryListComponent implements OnInit {
+export class EntryListComponent extends ListaPadrao<IEntry> implements OnInit {
 
-  subscription!: Subscription;
 
-  dataSource!: IEntry[];
-
+  subscription2!: Subscription;
+  categoryL!: ICategory[];
+  vlrId!: string;
 
   constructor(
-    private servico: EntryService,
-    public dialog: MatDialog,
-    private snackBar: MatSnackBar,
+    protected service: EntryService,
+    protected injector: Injector,
+    private serviceCat: CategoryServico
 
-  ) { }
+  ) { super(injector, service ) }
 
 
 
   ngOnInit(): void {
-
-
-
-    this.subscription = this.servico.get()
-      .subscribe(
-        dados => this.dataSource = dados,
-        error => console.log(error),
-        () => console.log(this.dataSource )
-
-      );
+    this.subscription2 = this.serviceCat.get().subscribe(dado => this.categoryL = dado, erro => console.error(erro), () => console.log(this.categoryL));
+    this.CompleteList();
+    this.valorTrocaCategory();
 
   }
+valorTrocaCategory(){
 
-  // ********************** Deletar  **********************
 
-  delete(id: string): void {
 
-    const dialogRef = this.dialog.open(BotaoConfirmaComponent, {
-      panelClass: 'myapp-no-padding-dialog',
-      data: {
-        mensagem: 'Deseja realmente excluir?',
-        botao1: 'Excluir'
-      },
-    });
+  // console.log(` cat ${}`);
 
-    dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
-          this.servico.delete(id)
-            .subscribe(
-              () => this.snackBar.open('Apagado com sucesso', '', { duration: 2000 }),
-              error => this.snackBar.open(`Erro ao deletar ${ error }`, '', { duration: 2000 }),
-              () => this.ngOnInit()
-            );
-        }
-      }
-    );
-  }
+  
+}
+  
 
 
  // ********************** Lista de cabeçalho da tabela  **********************
@@ -77,12 +53,10 @@ export class EntryListComponent implements OnInit {
 
 
   // ********************** NG On Destroy  **********************
+ngOnDestroy(){
+  this.subscription2.unsubscribe();
+}
 
-  ngOnDestroy(): void {
-
-    this.subscription.unsubscribe();
-
-  }
 }
 
 

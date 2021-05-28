@@ -1,4 +1,3 @@
-import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EntryFormComponent } from '../entry-form/entry-form.component';

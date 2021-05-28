@@ -1,7 +1,7 @@
 
 import { HttpClient, HttpErrorResponse,  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, ReplaySubject } from 'rxjs';
 
 
 import { IUser } from '../../user/user-shared/user-interface';
@@ -21,8 +21,8 @@ export class AuthService {
 
   private readonly URL = 'http://localhost:5000/auth/';
 
-  // private subUser: BehaviorSubject<UserInterface> = new BehaviorSubject('');
-    // private subLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private subUser$: ReplaySubject<IUser> = new ReplaySubject<IUser>();
+    private subLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   login(credentials: {email: string, password: string}): Observable<IUser> {
     return this.http
@@ -30,9 +30,19 @@ export class AuthService {
       .pipe(
         tap((u: any) => {
           localStorage.setItem('token', u.token);
+          this.subLoggedIn$.next(true);
+          this.subUser$.next(u)
         })
 
       )
+  }
+
+  isAuthenticated(): Observable<boolean>{
+      return this.subLoggedIn$.asObservable();
+  }
+
+  getUser(): Observable<IUser>{
+    return this.subUser$.asObservable();
   }
 
 
