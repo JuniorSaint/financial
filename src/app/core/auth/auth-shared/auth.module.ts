@@ -1,10 +1,10 @@
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { PrimengModule } from './../../../share/primeng.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from 'src/app/share/material.module';
-import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -27,15 +27,15 @@ import { AuthInterceptor } from '../auth.interceptor';
     FormsModule
   ]
 })
-export class AuthModule {
 
-  static forRoot():any{
+
+export class AuthModule {
+  static forRoot(): ModuleWithProviders<AuthModule> {
     return {
-      NgModule: AuthModule,
+      ngModule: AuthModule,
       providers: [
         AuthInterceptor
       ]
-    }
+    };
   }
-
- }
+}

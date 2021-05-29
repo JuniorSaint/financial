@@ -48,6 +48,8 @@ export class AuthService {
 
 logOut(){
   localStorage.removeItem('token');
+  this.subLoggedIn$.next(false);
+  this.subUser$.next();
 }
 
 

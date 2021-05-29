@@ -78,7 +78,10 @@
               {{ (user$ | async)?.name}}
             </div>
             <div>
-              <button mat-button (click)="logOut()">Logout</button>
+              <button mat-button (click)="logOut()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </button>
             </div>
           </div>
 

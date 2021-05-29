@@ -47,7 +47,7 @@ import { StoreModule } from '@ngrx/store';
     CategoryModule,
     MaterialModule,
     UserModule,
-    AuthModule,
+    AuthModule.forRoot(),
     StoreModule.forRoot({})
   ],
   providers: [
