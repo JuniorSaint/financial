@@ -1,12 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-
 import { ICategory } from './category-interface';
 import { CrudServico } from 'src/app/share/crud-servico';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { HttpHeaders } from '@angular/common/http';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +15,4 @@ export class CategoryServico extends CrudServico<ICategory> {
   ) {
     super('http://localhost:5000/category', injector);
   }
-
-
 }

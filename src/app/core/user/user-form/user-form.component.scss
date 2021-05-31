@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 
-
 #main{
   display: flex;
   flex-direction: row;
@@ -14,19 +13,16 @@
 
 #container{
   width: 900px;
-
 }
 
 #telefones-content {
   display: flex;
   flex-direction: row;
-
 }
 
 .col{
   margin-right: 10px;
 }
-
 
 .btn-salvar{
   border-radius: 20px;

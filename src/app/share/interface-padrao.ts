@@ -1,3 +1,3 @@
-export abstract class InterfacePadrao {
+export abstract class IPadrao {
   id?: number;
 }

@@ -1,7 +1,6 @@
 <div id="main-div">
   <mat-card id="card-div">
     <mat-card-header>
-
       <mat-card id="header-card">
         <div>
           <p style="letter-spacing: 1px; font-size: 1.5rem; ">{{ pageTitle }} </p>
@@ -10,11 +9,9 @@
 
         </div>
       </mat-card>
-
     </mat-card-header>
 
     <mat-card-content>
-
       <form style="margin-top: 30px;" class="example-form" [formGroup]="formulario">
 
         <div>
@@ -50,34 +47,28 @@
               </p-dropdown>
               <small id="tipo-help" class="p-error"> </small>
             </div>
-
           </div>
         </div>
 
         <div>
           <div class="p-fluid p-formgrid p-grid">
-
             <div class="p-field p-col">
               <label for="pago">Esta Pago</label>
               <p-dropdown id="pago" placeholder=" _ " [options]="simNao" formControlName="paid" optionLabel="label"
                 optionValue="value" [showClear]="true">
               </p-dropdown>
-
             </div>
 
             <div class="p-field p-col">
-
               <label for="icon">Data Final</label>
               <p-calendar formControlName="dateLaunch" dataType="string" [showIcon]="true" inputId="icon"
                 dateFormat="dd/mm/yy">
               </p-calendar>
-
             </div>
           </div>
         </div>
 
         <div>
-
           <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
               <label for="categoria">Categoria</label>
@@ -87,13 +78,12 @@
 
             </div>
           </div>
-
         </div>
 
       </form>
     </mat-card-content>
     <button mat-raised-button (click)="onSubmit()" [disabled]="!formulario.valid" class="btn-salvar"> {{ txtBtn }}
     </button>
-    <button mat-raised-button (click)="voltar()" class="btn-voltar">Voltar</button>
+    <button mat-raised-button (click)="btnVoltar()" class="btn-voltar">Voltar</button>
   </mat-card>
 </div>

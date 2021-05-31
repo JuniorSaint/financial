@@ -1,14 +1,10 @@
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from './../../share/primeng.module';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ReportRoutingModule } from './report-routing.module';
-
 import { MaterialModule } from 'src/app/share/material.module';
 import { ReportComponent } from './report.component';
-
-
 @NgModule({
   declarations: [
     ReportComponent
@@ -19,8 +15,7 @@ import { ReportComponent } from './report.component';
     MaterialModule,
     PrimengModule,
     FormsModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule    
   ]
 })
 export class ReportModule { }

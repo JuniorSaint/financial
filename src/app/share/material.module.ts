@@ -45,21 +45,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
-
-
-
-
-
-
-
 @NgModule({
-  declarations: [
+  declarations: [],
 
-],
 imports: [
-
-
-
     ClipboardModule,
     CdkStepperModule,
     CdkTableModule,
@@ -103,13 +92,9 @@ imports: [
     OverlayModule,
     PortalModule,
     ScrollingModule,
-
-
 ]
 ,
   exports: [
-
-
     ClipboardModule,
     CdkStepperModule,
     CdkTableModule,
@@ -153,7 +138,6 @@ imports: [
     OverlayModule,
     PortalModule,
     ScrollingModule,
-
   ],
   providers: [],
 

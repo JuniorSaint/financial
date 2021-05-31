@@ -1,11 +1,8 @@
-
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CrudServico } from 'src/app/share/crud-servico';
 import { IEntry } from '../entries/entry-shared/entry-interface';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -24,5 +21,4 @@ export class ReportService extends CrudServico<IEntry>{
          catchError(this.handleError)
        );
   }
-
 }

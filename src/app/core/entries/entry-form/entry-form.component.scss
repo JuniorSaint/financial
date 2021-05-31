@@ -23,14 +23,12 @@
   align-items: center;
 }
 
-
 #header-card{
   margin-right: 20px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
 .btn-salvar{
@@ -47,7 +45,6 @@
 #calendar{
   width: 100%;
 }
-
 
 @media screen and (max-width: 489px) {
   .p-formgroup-inline {

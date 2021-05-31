@@ -1,11 +1,11 @@
 
 import { HttpClient, HttpErrorResponse,  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, throwError, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, ReplaySubject, of } from 'rxjs';
 
 
 import { IUser } from '../../user/user-shared/user-interface';
-import { tap } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -38,7 +38,29 @@ export class AuthService {
   }
 
   isAuthenticated(): Observable<boolean>{
-      return this.subLoggedIn$.asObservable();
+    const token = localStorage.getItem('token');
+    if ( token && !this.subLoggedIn$.value){
+      return this.checktokenValidation();
+  }
+  return this.subLoggedIn$.asObservable();
+  }
+
+  checktokenValidation(): Observable<boolean> {
+    return this.http.get<IUser>(`${this.URL}/user`)
+    .pipe(
+      tap((u:IUser) => {
+        if (u) {
+          this.subLoggedIn$.next(true);
+          this.subUser$.next(u);
+        }
+      }
+      ),
+      map((u:IUser) => (u) ? true : false),
+      catchError((error) => {
+        this.logOut();
+        return of(false);
+      })
+    );
   }
 
   getUser(): Observable<IUser>{

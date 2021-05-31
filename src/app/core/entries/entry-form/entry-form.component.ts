@@ -1,33 +1,22 @@
 
 import { Injector, Component, OnInit, OnDestroy } from '@angular/core';
-
 import { Subscription } from 'rxjs';
-
 import { Validators } from '@angular/forms';
-
 import { FormularioPadrao } from 'src/app/share/formulario-padrao';
 import { ICategory } from '../../category/category-shared/category-interface';
 import { CategoryServico } from '../../category/category-shared/category-servico.service';
 import { IEntry } from '../entry-shared/entry-interface';
-
 import { format } from 'date-fns'
-
 import { EntryService } from '../entry-shared/entry.service';
-
 @Component({
   selector: 'app-entry-form',
   templateUrl: './entry-form.component.html',
   styleUrls: ['./entry-form.component.scss']
 })
 export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnInit, OnDestroy {
-
-
-  entryByID!: IEntry;
+  formUpdate!: IEntry;
   categoria!: ICategory[];
   subscription2!: Subscription;
-
-
-
 
   simNao = [
     { label: 'Sim', value: true },
@@ -38,9 +27,6 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
     'Despesa', 'Receita'
   ];
 
-
-  // ********************* Constructor  ********************
-
   constructor(
     protected injector: Injector,
     protected service: EntryService,
@@ -50,14 +36,7 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
     super(injector, 'entry', service)
   }
 
-  // ********************* NG OnInit  ********************
-
   ngOnInit(): void {
-
-    this.popularForm();  // função de popular o forumulário
-
-
-
     this.subscription2 = this.serviceCat.get()
        .subscribe(
         dados => this.categoria = dados,
@@ -76,45 +55,39 @@ export class EntryFormComponent extends FormularioPadrao<IEntry> implements OnIn
       category: [null, Validators.required]
     });
 
+    this.popularForm();
   }
 
-  // ********************* Função de Popular Formulário  ********************
-
+  // Função de Popular Formulário
   popularForm() {
     if (this.urlAtiva !== 'new') {
-
       this.service.getByID(this.urlAtiva)
         .subscribe(
           dados => {
-            this.entryByID = dados,
+            this.formUpdate = dados,
             console.log(dados)
           },
           error => console.log(error),
           () => {
-            this.formulario.patchValue({
-              id: this.entryByID.id,
-              name: this.entryByID.name,
-              description: this.entryByID.description,
-              typeEntry: this.entryByID.typeEntry,
-              amount: this.entryByID.amount,
-              dateLaunch: this.entryByID.dateLaunch,
-              paid: this.entryByID.paid,
-              category: this.entryByID.category
-            }
-            )
+            this.patchFormUpdate(this.formUpdate)
           })
     }
-
   }
 
-  
-
-  // ********************* NG OnDestroy  ********************
+  patchFormUpdate(formUpdate: IEntry) {
+    this.formulario.patchValue({
+      id: this.formUpdate.id,
+      name: this.formUpdate.name,
+      description: this.formUpdate.description,
+      typeEntry: this.formUpdate.typeEntry,
+      amount: this.formUpdate.amount,
+      dateLaunch: this.formUpdate.dateLaunch,
+      paid: this.formUpdate.paid,
+      category: this.formUpdate.category
+    })
+  }  
 
   ngOnDestroy() {
-
     this.subscription2.unsubscribe();
-
   }
-
 }

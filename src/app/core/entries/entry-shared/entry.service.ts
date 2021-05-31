@@ -1,10 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
-
 import { IEntry } from './entry-interface';
 import { CrudServico } from 'src/app/share/crud-servico';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +14,6 @@ export class EntryService extends CrudServico<IEntry> {
     super('http://localhost:5000/entry',  injector);
   }
 
-
   getByDate(dateIn:Date, DateEnd:Date): Observable<IEntry> {
     return this.http.get<IEntry>(`${this.URL}/dataLaunch/${dateIn}/${DateEnd}`)
       .pipe(
@@ -24,7 +21,6 @@ export class EntryService extends CrudServico<IEntry> {
         catchError(this.handleError)
       );
   }
-
 }
 
 

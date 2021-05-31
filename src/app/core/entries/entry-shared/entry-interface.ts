@@ -1,7 +1,5 @@
-import { InterfacePadrao } from "src/app/share/interface-padrao"
-
-export interface IEntry extends InterfacePadrao {
-
+import { IPadrao } from "src/app/share/interface-padrao"
+export interface IEntry extends IPadrao {
   _id?: string,
   name: string,
   description: string,
@@ -10,5 +8,4 @@ export interface IEntry extends InterfacePadrao {
   dateLaunch:  string,
   paid: boolean,
   category: string
-
 }
